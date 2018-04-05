@@ -11,6 +11,11 @@ Crypto For Science is a crowdfunding platform that uses the spirit of cryptocurr
 6. `meteor npm install --save`
 7. `meteor`
 
+### Default admin account
+
+- email: app_admin@cryptoforscience.com
+- password: app_admin-password
+
 ## How it works
 
 Basically, a researcher adds his project + his contact data + how much he has already raised + where he wants to get paid: Bitcoin and ETH addresses. For any other type of payment, he’d have to be contacted personally and, after receiving the funds, he’d add the contribution manually.
