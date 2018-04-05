@@ -1,0 +1,70 @@
+//- 
+	Laur:
+	So, after clicking a project on the main page, they'd be shown in this order: 
+	Summary | Photo (on the same row), Why is this useful?, Approximately..., 
+	Description, Contact | payment info
+
+template(name="projectShow")
+	div.container#title
+		div.row
+			div.col-sm-12
+				div.jumbotron
+					div.row
+						div.col-sm-12.text-right
+							if canEditProject project._id
+								a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit
+					div.row
+						div.col-sm-12
+							h1.display-4 #{project.title}
+					div.row
+						div.col-sm-6
+							p.lead #{project.qa.summary}
+						div.col-sm-6
+							+progressBar(project=project)
+							a.btn.btn-primary(href="#paymentInfo") Support this project
+		div.row
+			div.col-sm-12
+				h4 Why is this useful?
+				p #{project.qa.whyUseful}
+			div.col-sm-12
+				h4 Approximately, how much time of research will this cover? 
+				p #{project.qa.howMuchTime}
+			div.col-sm-12
+				h4 How will the funds be spent?
+				p #{project.qa.howFundsWillbeSpent}
+			div.col-sm-12
+				h4 Description
+				p #{project.qa.description}
+			div.col-sm-6
+				h4 Contact
+				p
+					table
+						tr
+							td Phone:
+							td #{project.contact.phone}
+						tr
+							td Email:
+							td #{project.contact.email}
+			div.col-sm-6#paymentInfo
+				h4 How to Support
+				p.mark
+					table
+						tr
+							td Send Bitcoin: &nbsp;
+							td #{project.cryptoAddresses.BTC}
+						tr
+							td Send Etherium: &nbsp;
+							td #{project.cryptoAddresses.ETH}
+						if project.acceptsFiat
+							tr
+								td Wire Transfer: &nbsp;
+								td [how to donate to bank account]
+						//- tr
+							td Activate your Network: &nbsp;
+							td 
+								| [fb]
+								| [tw]
+								//- | [hn?]
+				unless canEditProject project._id
+					p.text-right
+						a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectDonationNew' projectId=project._id}}") Claim a donation

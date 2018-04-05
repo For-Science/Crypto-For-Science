@@ -1,0 +1,19 @@
+{
+  "name": "crypto-for-science",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "postinstall": "cp -R node_modules/font-awesome/fonts ./public/"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.38",
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "meteor-node-stubs": "^0.2.11",
+    "moment": "^2.20.1",
+    "noty": "^3.1.4",
+    "popper.js": "^1.12.9",
+    "simpl-schema": "^0.3.2"
+  }
+}

@@ -1,0 +1,38 @@
+template(name="projectExternalFundsAdmin")
+	h1 External Funds
+	p.text-muted #{project.title}
+	p When someone donates cryptocurrency to the address(es) listed on your project, the amount is automatically added to the campaign total, even if they don't submit a donation claim. 
+		|However if a donor pays you externally (say, with cash or wire transfer), 
+		|then to add that amount to the campaign total you need to add the external funding.
+	if externalFunds.count
+		p Here's all the external funding that has been added to this campaign.
+		ul.list-group
+			each externalFund in externalFunds
+				+externalFundListItem(externalFundItem=externalFund)
+	else
+		.alert.alert-primary(role="alert")
+			|You haven't added any external funding to this campaign.
+	a.btn.btn-primary.btn-lg(href="{{pathFor 'projectExternalFundsNew' projectId=project._id}}" role="button")
+		|Add external funding
+	a.btn.btn-link(role="button" href="{{pathFor 'settings_myProjects'}}") Back
+
+template(name="externalFundListItem")
+	+with(externalFundItem)
+		li.list-group-item
+			.row
+				.col-6 
+					table
+						tr
+							td
+								p Amount 
+							td
+								p
+									|&nbsp;&nbsp;${{centiToDeci amount}}
+						tr
+							td
+								p Contribution Name
+							td
+								p
+									|&nbsp;&nbsp;#{title}
+				.col-6.text-right
+					a.btn.btn-sm.btn-danger.removeFunding(href="#" role="button") Remove

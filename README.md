@@ -1,7 +1,17 @@
 # Crypto-For-Science
+
 Crypto For Science is a crowdfunding platform that uses the spirit of cryptocurrency in order to fund scientific research: no fees and no intermediaries - all the funds go directly to the researchers.
 
-The code from this repository should be online at: [https://cryptoforscience.com](https://cryptoforscience.com)
+<!-- The code from this repository should be online at: [https://github.com/For-Science/Crypto-For-Science](https://github.com/For-Science/Crypto-For-Science) -->
+## Usage
+1. Clone it
+2. `cd cryptoforscience`
+3. Remove the .git folder
+4. `git init`
+6. `meteor npm install --save`
+7. `meteor`
+
+## How it works
 
 Basically, a researcher adds his project + his contact data + how much he has already raised + where he wants to get paid: Bitcoin and ETH addresses. For any other type of payment, he’d have to be contacted personally and, after receiving the funds, he’d add the contribution manually.
 

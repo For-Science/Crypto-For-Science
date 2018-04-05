@@ -1,0 +1,24 @@
+<template name="documentShow">
+
+  <div class="document-show">
+    <div class="card">
+      <div class="card-body">
+        {{#if Template.subscriptionsReady}}
+          <h2>{{document.title}}</h2>
+          <p>{{document.content}}</p>
+          <hr>
+          <p class="text-muted">
+            {{#if document.updatedAt}}
+              Updated: {{showPrettyTimestamp document.updatedAt}}<br>
+            {{/if}}
+            Created: {{showPrettyTimestamp document.createdAt}}
+          </p>
+          <a href="{{pathFor 'documentsIndex'}}" class="btn btn-link">Back</a>
+        {{else}}
+          {{> loader}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+</template>

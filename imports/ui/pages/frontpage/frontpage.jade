@@ -1,0 +1,22 @@
+template(name="frontpage")
+	div.container
+		div.row.frontpage
+			+frontPage_header(site=site)
+		div.row
+			div.col-sm-12
+				h3 Featured Projects
+		div.row
+			each project in projects
+				div.col-sm-4
+					+projectCard(project=project)
+
+template(name="frontPage_header")
+	div.jumbotron
+		div.col-sm-12
+			h1.display-4 #{site.title}
+			p.lead #{site.tagline}
+			//- p It comes with a complete collection sample including publications, subscriptions and CRUD functionality. Routes, views and some nice helpers are also included.
+			a.btn.btn-primary.btn-lg(href="{{pathFor 'projectNew'}}" role="button")
+				|Submit your project
+			a.btn.btn-primary.btn-lg(href="{{pathFor 'projectsIndex'}}" role="button")
+				|View all projects

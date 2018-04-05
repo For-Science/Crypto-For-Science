@@ -1,0 +1,37 @@
+template(name="projectEdit")
+	div.container
+		//- div.row
+			div.col-sm-12
+				h1 Edit Project
+		div.row
+			div.col-sm-12
+				div.project-new
+					div.card
+						h2.card-title.card-header Edit Project
+						div.card-body
+							if Template.subscriptionsReady
+								//- h2.card-title Edit Project
+								h4.card-subtitle #{project.title}
+								br
+								hr
+								br
+								+autoForm schema=updateProjectSchema doc=project id="projectEditForm" type="method" meteormethod="projects.update" 
+									+afQuickField name='_id' readonly=true type='hidden'
+									+afQuickField name='title'
+									+afQuickField name='qa.summary' rows=2
+									+afQuickField name='goals.projectGoal' readonly=true
+									+afQuickField name='goals.softGoal' readonly=true
+									+afQuickField name='timePeriods.timePeriod' readonly=true
+									//- +afQuickField name='timePeriods.softTimePeriod'
+									+afQuickField name='qa.whyUseful' rows=6
+									+afQuickField name='qa.howMuchTime' rows=3
+									+afQuickField name='qa.howFundsWillbeSpent' rows=3
+									+afQuickField name='qa.description' rows=6
+									+afQuickField name='cryptoAddresses.ETH' readonly=true type='hidden'
+									+afQuickField name='cryptoAddresses.BTC' readonly=true type='hidden'
+									+afQuickField name='contact.contactName'
+									+afQuickField name='contact.phone'
+									+afQuickField name='contact.email'
+									button.btn.btn-primary(type="submit") Update
+									//- a.btn.btn-link(role="button" href="{{pathFor 'projectShow' projectId=project._id}}#title") Back
+									a.btn.btn-link(role="button" href="{{pathFor 'settings_myProjects'}}") Back

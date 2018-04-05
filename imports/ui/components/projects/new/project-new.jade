@@ -1,0 +1,36 @@
+template(name="projectNew")
+	div.container
+		//- div.row
+			div.col-sm-12
+				h1 new project
+		div.row
+			div.col-sm-12
+				div.project-new
+					div.card
+						h2.card-title.card-header Submit your project
+						div.card-body
+							//- h2.card-title Submit your project
+							h6.card-subtitle.text-muted.
+								Get your project listed on Crypto for Science.
+							br
+							hr
+							br
+							+autoForm schema=createProjectSchema id="projectNewForm" type="method" meteormethod="projects.create"
+								+afQuickField name='title'
+								+afQuickField name='qa.summary' rows=2
+								+afQuickField name='goals.projectGoal'
+								+afQuickField name='goals.softGoal'
+								+afQuickField name='raised.totalRaised'
+								+afQuickField name='timePeriods.timePeriod'
+								//- +afQuickField name='timePeriods.softTimePeriod'
+								+afQuickField name='qa.whyUseful' rows=6
+								+afQuickField name='qa.howMuchTime' rows=3
+								+afQuickField name='qa.howFundsWillbeSpent' rows=3
+								+afQuickField name='qa.description' rows=6
+								+afQuickField name='cryptoAddresses.ETH'
+								+afQuickField name='cryptoAddresses.BTC'
+								+afQuickField name='contact.contactName'
+								+afQuickField name='contact.phone'
+								+afQuickField name='contact.email'
+								button.btn.btn-primary(type="submit") Submit
+								a.btn.btn-link(role="button" href="{{pathFor 'frontpage'}}") Back
