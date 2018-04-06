@@ -35,13 +35,14 @@ Meteor.publish("donations.forProject", function donationsForProject(projectId) {
 })
 
 
-// DONATIONS SHOW
-// -------------------------------------------------------
-Meteor.publish("donations.single", function donationsSingle(id) {
-  new SimpleSchema({
-    id: { type: String }
-  }).validate({ id })
-
-  return Donations.find(id)
-})
-
+// // DONATIONS SHOW
+// // -------------------------------------------------------
+// Meteor.publish("donations.single", function donationsSingle(id) {
+//   new SimpleSchema({
+//     id: { type: String }
+//   }).validate({ id })
+//
+//   return Donations.find(id)
+// })
+// // ^ disabled because there's no use for this right now. Plus it can retrieve
+// // private data and there's no permissions check on it.
