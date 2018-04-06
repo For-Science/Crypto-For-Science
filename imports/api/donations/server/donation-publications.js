@@ -30,6 +30,13 @@ Meteor.publish("donations.canManage", function donationsCanManage(projectId) {
 
 // DONATIONS SHOW
 // -------------------------------------------------------
+Meteor.publish("donations.forProject", function donationsForProject(projectId) {
+	return Donations.find({"projectId" : projectId, "reviewed" : true, "approved" : true })
+})
+
+
+// DONATIONS SHOW
+// -------------------------------------------------------
 Meteor.publish("donations.single", function donationsSingle(id) {
   new SimpleSchema({
     id: { type: String }
@@ -37,3 +44,4 @@ Meteor.publish("donations.single", function donationsSingle(id) {
 
   return Donations.find(id)
 })
+
