@@ -15,17 +15,30 @@ Meteor.publish("projects.all", function projectsAll() {
   return Projects.find({"bools.approved" : true, "bools.outofTime" : false})
 })
 
+// PROJECTS ADMIN LIVE
+// -------------------------------------------------------
+Meteor.publish("projects.admin", function projectsAll() {
+	if( !permissions.canApproveRejectProjects() ) {
+		// can't approve or reject projects (so, not an admin, checker, etc).
+		// so can't see this publication.
+		return
+	}
+
+  return Projects.find()
+})
+
 // PROJECTS PENDING
 // -------------------------------------------------------
 Meteor.publish("projects.pending", function projectsPending() {
-	if( permissions.isAdmin() ){
-		// console.log("this user is an admin");
-  	return Projects.find({"bools.approved" : false})
-	}
-	else{
-		// console.log("this user is not an admin");
+
+	if( !permissions.canApproveRejectProjects() ) {
+		// can't approve or reject projects (so, not an admin, checker, etc).
+		// so can't see this publication.
 		return
 	}
+
+  return Projects.find({"bools.approved" : false})
+
 })
 
 // PROJECTS FEATURED
@@ -36,7 +49,7 @@ Meteor.publish("projects.featured", function projectsFeatured() {
 
 // PROJECTS CAN MANAGE
 // -------------------------------------------------------
-Meteor.publish("projects.canManage", function projectsCanManage() {
+Meteor.publish("projects.isResearcher", function projectsCanManage() {
 	// return projects that user can manage
 	let ids = Roles.getGroupsForUser(Meteor.userId(), 'researcher'); // returns an array of ids where user is researcher
 
@@ -56,5 +69,12 @@ Meteor.publish("projects.single", function projectsSingle(id) {
     id: { type: String }
   }).validate({ id })
 
-  return Projects.find(id)
+	if( permissions.canViewAnyProject() ) {
+		// staff can see a project even if it's not published
+		return Projects.find(id)
+	}
+	else{
+		// otherwise the project needs to be published
+		return Projects.find({_id : id, "bools.approved" : true})
+	}
 })

@@ -113,3 +113,122 @@ export const deleteProject = new ValidatedMethod({
     })
   }
 })
+
+export const approveProject = new ValidatedMethod({
+  name: "project.approve",
+  validate: ProjectsSchema.validator(),
+  run(project) {
+    // Additional data verification
+
+		// validate that they have the permissions needed to approve this project
+		if (!permissions.canApproveRejectProjects()) {
+			throw new Meteor.Error('projects.create',
+        "Does not have necessary permissions to edit project");
+		}
+
+		Projects.update(
+			project._id,
+			{
+				$set: {
+					"bools.reviewed": true,
+					"bools.approved": true,
+				}
+		  },
+	    function(error, result) {
+	      if (error) {
+	        throw new Meteor.Error(500, "Server error")
+	      }
+	    }
+		);
+	}
+})
+
+export const rejectProject = new ValidatedMethod({
+  name: "project.reject",
+  validate: ProjectsSchema.validator(),
+  run(project) {
+    // Additional data verification
+
+		// validate that they have the permissions needed to reject this project
+		if (!permissions.canApproveRejectProjects()) {
+			throw new Meteor.Error('projects.create',
+        "Does not have necessary permissions to edit project");
+		}
+
+		Projects.update(
+			project._id,
+			{
+				$set: {
+					"bools.reviewed": true,
+					"bools.approved": false,
+					"bools.isFeatured": false,
+				}
+		  },
+	    function(error, result) {
+	      if (error) {
+	        throw new Meteor.Error(500, "Server error")
+	      }
+	    }
+		);
+	}
+})
+
+export const featureProject = new ValidatedMethod({
+  name: "project.feature",
+  validate: ProjectsSchema.validator(),
+  run(project) {
+    // Additional data verification
+
+		// validate that they have the permissions needed to reject this project
+		if (!permissions.canApproveRejectProjects()) {
+			throw new Meteor.Error('projects.create',
+        "Does not have necessary permissions to edit project");
+		}
+
+		Projects.update(
+			project._id,
+			{
+				$set: {
+					"bools.reviewed": true,
+					"bools.approved": true,
+					"bools.isFeatured": true,
+				}
+		  },
+	    function(error, result) {
+	      if (error) {
+	        throw new Meteor.Error(500, "Server error")
+	      }
+	    }
+		);
+	}
+})
+
+export const unfeatureProject = new ValidatedMethod({
+  name: "project.unfeature",
+  validate: ProjectsSchema.validator(),
+  run(project) {
+    // Additional data verification
+
+		// validate that they have the permissions needed to reject this project
+		if (!permissions.canApproveRejectProjects()) {
+			throw new Meteor.Error('projects.create',
+        "Does not have necessary permissions to edit project");
+		}
+
+		Projects.update(
+			project._id,
+			{
+				$set: {
+					"bools.reviewed": true,
+					"bools.approved": true,
+					"bools.isFeatured": false,
+				}
+		  },
+	    function(error, result) {
+	      if (error) {
+	        throw new Meteor.Error(500, "Server error")
+	      }
+	    }
+		);
+	}
+})

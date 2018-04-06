@@ -5,6 +5,8 @@ import { ValidatedMethod } from "meteor/mdg:validated-method"
 import { Donations } from "../both/donation-collection.js"
 import DonationSchema from "./schemas/donation/donation-schema"
 
+import * as permissions from "/imports/modules/permissions.js"
+
 // ***************************************************************
 // METHODS (related to the donations (claims) collection)
 // ***************************************************************
@@ -38,15 +40,14 @@ export const approveDonation = new ValidatedMethod({
   run(donation) {
     // Additional data verification
 
-		// TODO: please validate that it's the campaign manager approving a donation
-		// claim for his/her project. will probably need to read the donation from
-		// database before updating, and make sure the donation is for this user's
-		// project because it's unsafe coming from the client
-
-		const donationRead = Donations.findOne(donation._id);
+		// validate that they have the permissions needed to approve this donation claim
+		if (!permissions.canEditProject(donation.projectId)) {
+			throw new Meteor.Error('projects.create',
+        "Does not have necessary permissions to edit project");
+		}
 
 		Donations.update(
-			donation._id,
+			{_id : donation._id, projectId : donation.projectId},
 			{
 				$set: {
 					reviewed: true,
@@ -68,15 +69,16 @@ export const rejectDonation = new ValidatedMethod({
   run(donation) {
     // Additional data verification
 
-		// TODO: please validate that it's the campaign manager approving a donation
-		// claim for his/her project. will probably need to read the donation from
-		// database before updating, and make sure the donation is for this user's
-		// project because it's unsafe coming from the client
-
+		// validate that they have the permissions needed to approve this donation claim
 		const donationRead = Donations.findOne(donation._id);
 
+		if (!permissions.canEditProject(donation.projectId)) {
+			throw new Meteor.Error('projects.create',
+        "Does not have necessary permissions to edit project");
+		}
+
 		Donations.update(
-			donation._id,
+			{_id : donation._id, projectId : donation.projectId},
 			{
 				$set: {
 					reviewed: true,

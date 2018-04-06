@@ -55,17 +55,80 @@ template(name="settings_myDonations")
 
 template(name="settings_admin")
 	#admin.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_admin'}}")
-		//- h2 Admin
-		h5 Campaigns Pending Review
-		ul.list-group
-			each project in projects
-				li.list-group-item
-					.row
-						.col-6 
-							a(href="{{pathFor 'projectShow' projectId=project._id}}") #{project.title}
-						.col-6.text-right
-							//- a.btn.btn-sm.btn-secondary(href="#" role="button") Preview
-							a.btn.btn-sm.btn-secondary(href="#" role="button") Approve
-							|&nbsp;
-							a.btn.btn-sm.btn-secondary(href="#" role="button") Reject
-							//- a.btn.btn-sm.btn-secondary(href="#" role="button") Feature (if is approved)
+		h2 Campaigns
+		
+		h5 Pending Review
+		if projectsPending.count
+			ul.list-group
+				each project in projectsPending
+					+pendingCampaignListItem(project=project)
+		else
+			.alert.alert-primary(role="alert")
+				|There are no campaigns pending review.
+		
+		br
+		h5 Active
+		if projectsActive.count
+			ul.list-group
+				each project in projectsActive
+					+activeCampaignListItem(project=project)
+		else
+			.alert.alert-primary(role="alert")
+				|There are no active campaigns.
+
+		br
+		h5 Rejected
+		if projectsRejected.count
+			ul.list-group
+				each project in projectsRejected
+					+rejectedCampaignListItem(project=project)
+		else
+			.alert.alert-primary(role="alert")
+				|There are no rejected campaigns.
+
+
+template(name="pendingCampaignListItem")
+	+with(project)
+		li.list-group-item
+			.row
+				.col-6 
+					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+				.col-6.text-right
+					+approveProjectButton
+					|&nbsp;
+					+rejectProjectButton
+
+template(name="activeCampaignListItem")
+	+with(project)
+		li.list-group-item
+			.row
+				.col-6 
+					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+				.col-6.text-right
+					if bools.isFeatured
+						+unfeatureProjectButton
+					else
+						+featureProjectButton
+					|&nbsp;
+					+rejectProjectButton
+
+template(name="rejectedCampaignListItem")
+	+with(project)
+		li.list-group-item
+			.row
+				.col-6 
+					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+				.col-6.text-right
+					+approveProjectButton
+					
+template(name="approveProjectButton")
+	a.btn.btn-sm.btn-primary.approveProject(href="#" role="button") Approve
+
+template(name="rejectProjectButton")
+	a.btn.btn-sm.btn-danger.rejectProject(href="#" role="button") Reject
+
+template(name="featureProjectButton")
+	a.btn.btn-sm.btn-primary.featureProject(href="#" role="button") Feature
+
+template(name="unfeatureProjectButton")
+	a.btn.btn-sm.btn-secondary.unfeatureProject(href="#" role="button") Un-Feature
