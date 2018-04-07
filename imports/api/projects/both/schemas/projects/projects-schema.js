@@ -28,7 +28,7 @@ const projectContactSchema = new SimpleSchema({
 const projectCryptoAddressesSchema = new SimpleSchema({
 	ETH: {
     type: String,
-    label: "Etherium Address (Required)",
+    label: "Ethereum Address (Required)",
     min: 10,
     optional: false
   },

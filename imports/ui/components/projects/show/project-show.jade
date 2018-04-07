@@ -1,7 +1,7 @@
-//- 
+//-
 	Laur:
-	So, after clicking a project on the main page, they'd be shown in this order: 
-	Summary | Photo (on the same row), Why is this useful?, Approximately..., 
+	So, after clicking a project on the main page, they'd be shown in this order:
+	Summary | Photo (on the same row), Why is this useful?, Approximately...,
 	Description, Contact | payment info
 
 template(name="projectShow")
@@ -28,7 +28,7 @@ template(name="projectShow")
 				p #{project.qa.whyUseful}
 		div.row
 			div.col-sm-12
-				h4 Approximately, how much time of research will this cover? 
+				h4 Approximately, how much time of research will this cover?
 				p #{project.qa.howMuchTime}
 		div.row
 			div.col-sm-12
@@ -57,7 +57,7 @@ template(name="projectShow")
 							td Send Bitcoin: &nbsp;
 							td #{project.cryptoAddresses.BTC}
 						tr
-							td Send Etherium: &nbsp;
+							td Send Ether: &nbsp;
 							td #{project.cryptoAddresses.ETH}
 						if project.acceptsFiat
 							tr
@@ -65,7 +65,7 @@ template(name="projectShow")
 								td [how to donate to bank account]
 						//- tr
 							td Activate your Network: &nbsp;
-							td 
+							td
 								| [fb]
 								| [tw]
 								//- | [hn?]
@@ -76,16 +76,16 @@ template(name="projectShow")
 			div.col-sm-12
 				h4 Donor List
 				p
-					|When you donate cryptocurrency, your contribution is automatically reflected in the campaign total. 
-					| In addition, you can 
-					a(href="{{pathFor 'projectDonationNew' projectId=project._id}}") claim your donation 
-					|and get listed as a contributor, if you want. 
+					|When you donate cryptocurrency, your contribution is automatically reflected in the campaign total.
+					| In addition, you can
+					a(href="{{pathFor 'projectDonationNew' projectId=project._id}}") claim your donation
+					|and get listed as a contributor, if you want.
 			div.col-sm-12
 				if donations.count
 					p
 						each donation in donations
 							span.badge.badge-secondary &nbsp;#{donation.title}&nbsp;
 							|&nbsp;
-						
+
 				else
-					p All of the donors are currently anonymous. 
+					p All of the donors are currently anonymous.
