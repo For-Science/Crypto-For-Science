@@ -27,8 +27,11 @@ template(name="settings_myProjects")
 				each project in projects
 					li.list-group-item
 						.row
-							.col-4 
-								a(href="{{pathFor 'projectShow' projectId=project._id}}") #{project.title}
+							.col-4
+								if project.bools.approved
+									a(href="{{pathFor 'projectShow' projectId=project._id}}") #{project.title}
+								else
+									p #{project.title}
 								+progressBar(project=project)
 								if project.bools.reviewed
 									if project.bools.approved
@@ -38,10 +41,11 @@ template(name="settings_myProjects")
 								else
 									span.badge.badge-secondary pending review
 							.col-8.text-right
-								a.btn.btn-sm.btn-primary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit info
-								a.btn.btn-sm.btn-primary(href="{{pathFor 'projectExternalFundsAdmin' projectId=project._id}}" role="button") Add external funding
-								a.btn.btn-sm.btn-primary(href="{{pathFor 'projectDonationClaimsAdmin' projectId=project._id}}" role="button") Manage donation claims
-								//- a.btn.btn-sm.btn-secondary(href="#" role="button") End Campaign
+								if project.bools.approved
+									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit info
+									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectExternalFundsAdmin' projectId=project._id}}" role="button") Add external funding
+									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectDonationClaimsAdmin' projectId=project._id}}" role="button") Manage donation claims
+									//- a.btn.btn-sm.btn-secondary(href="#" role="button") End Campaign
 			else
 				p You don't have any fundraising campaigns.
 			a.btn.btn-primary.btn-lg(href="{{pathFor 'projectNew'}}" role="button")
@@ -56,7 +60,7 @@ template(name="settings_myDonations")
 template(name="settings_admin")
 	#admin.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_admin'}}")
 		h2 Campaigns
-		
+
 		h5 Pending Review
 		if projectsPending.count
 			ul.list-group
@@ -65,7 +69,7 @@ template(name="settings_admin")
 		else
 			.alert.alert-primary(role="alert")
 				|There are no campaigns pending review.
-		
+
 		br
 		h5 Active
 		if projectsActive.count
@@ -91,7 +95,7 @@ template(name="pendingCampaignListItem")
 	+with(project)
 		li.list-group-item
 			.row
-				.col-6 
+				.col-6
 					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
 				.col-6.text-right
 					+approveProjectButton
@@ -102,7 +106,7 @@ template(name="activeCampaignListItem")
 	+with(project)
 		li.list-group-item
 			.row
-				.col-6 
+				.col-6
 					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
 				.col-6.text-right
 					if bools.isFeatured
@@ -116,11 +120,11 @@ template(name="rejectedCampaignListItem")
 	+with(project)
 		li.list-group-item
 			.row
-				.col-6 
+				.col-6
 					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
 				.col-6.text-right
 					+approveProjectButton
-					
+
 template(name="approveProjectButton")
 	a.btn.btn-sm.btn-primary.approveProject(href="#" role="button") Approve
 
