@@ -6,7 +6,8 @@
     "postinstall": "cp -R node_modules/font-awesome/fonts ./public/"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.38",
+    "@babel/runtime": "^7.0.0-beta.44",
+    "bcrypt": "^1.0.3",
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
