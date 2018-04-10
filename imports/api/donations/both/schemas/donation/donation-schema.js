@@ -1,7 +1,7 @@
 import SimpleSchema from "simpl-schema"
 
 // ***************************************************************
-// Document schema
+// DONATION schema
 // ***************************************************************
 
 const DonationSchema = new SimpleSchema({

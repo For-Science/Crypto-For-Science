@@ -1,7 +1,7 @@
 import SimpleSchema from "simpl-schema"
 
 // ***************************************************************
-// Document schema
+// EXTERNALFUNDS schema
 // ***************************************************************
 
 const ExternalFundsSchema = new SimpleSchema({

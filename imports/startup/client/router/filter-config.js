@@ -25,7 +25,7 @@ const mustBeLoggedIn = (context, redirect, stop) => {
 }
 
 /*
-Uncomment to require the user to be logged in to view og modify documents
+Uncomment to require the user to be logged in to visit these routes
 Note: This is only handled client-side. Remember to do verification on the server as well
 */
 

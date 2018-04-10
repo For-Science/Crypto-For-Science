@@ -6,7 +6,7 @@ import { Projects } from "../both/project-collection.js"
 import * as permissions from "/imports/modules/permissions.js"
 
 // ***************************************************************
-// PUBLICATIONS (For the documents collection)
+// PUBLICATIONS (For the projects collection)
 // ***************************************************************
 
 // PROJECTS INDEX

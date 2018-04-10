@@ -4,10 +4,6 @@
 // as an API to the client.
 // ***************************************************************
 
-// DOCUMENTS
-import "/imports/api/documents/both/document-methods.js" // TODO: delete
-import "/imports/api/documents/server/document-publications.js" // TODO: delete
-
 // PROJECTS
 import "/imports/api/projects/both/project-methods.js"
 import "/imports/api/projects/server/project-publications.js"
