@@ -5,87 +5,97 @@
 	Description, Contact | payment info
 
 template(name="projectShow")
-	div.container#title
-		div.row
-			div.col-sm-12
-				div.jumbotron
-					div.row
-						div.col-sm-12.text-right
-							if canEditProject project._id
-								a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit
-					div.row
-						div.col-sm-12
-							h1.display-4 #{project.title}
-					div.row
-						div.col-sm-6
-							p.lead #{project.qa.summary}
-						div.col-sm-6
-							+progressBar(project=project)
-							a.btn.btn-primary(href="#paymentInfo") Support this project
-		div.row
-			div.col-sm-12
-				h4 Why is this useful?
-				p #{project.qa.whyUseful}
-		div.row
-			div.col-sm-12
-				h4 Approximately, how much time of research will this cover?
-				p #{project.qa.howMuchTime}
-		div.row
-			div.col-sm-12
-				h4 How will the funds be spent?
-				p #{project.qa.howFundsWillbeSpent}
-		div.row
-			div.col-sm-12
-				h4 Description
-				p #{project.qa.description}
-		div.row
-			div.col-sm-6
-				h4 Contact
-				p
-					table
-						tr
-							td Phone:
-							td #{project.contact.phone}
-						tr
-							td Email:
-							td #{project.contact.email}
-			div.col-sm-6#paymentInfo
-				h4 How to Support
-				p.mark
-					table
-						tr
-							td Send Bitcoin: &nbsp;
-							td #{project.cryptoAddresses.BTC}
-						tr
-							td Send Ether: &nbsp;
-							td #{project.cryptoAddresses.ETH}
-						if project.acceptsFiat
-							tr
-								td Wire Transfer: &nbsp;
-								td [how to donate to bank account]
-						//- tr
-							td Activate your Network: &nbsp;
-							td
-								| [fb]
-								| [tw]
-								//- | [hn?]
-				//- unless canEditProject project._id
-					p.text-right
-						a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectDonationNew' projectId=project._id}}") Claim a donation
-		div.row
-			div.col-sm-12
-				h4 Donor List
-				p
-					|When you donate cryptocurrency, your contribution is automatically reflected in the campaign total.
-					| In addition, you can
-					a(href="{{pathFor 'projectDonationNew' projectId=project._id}}") claim your donation
-					|and get listed as a contributor, if you want.
-			div.col-sm-12
-				if donations.count
-					p
-						each donation in donations
-							span.badge.badge-secondary &nbsp;#{donation.title}&nbsp;
-							|&nbsp;
+	if Template.subscriptionsReady
+		if project
+			div.container#title		
+				div.row
+					div.col-sm-12
+						div.jumbotron
+							div.row
+								div.col-sm-12.text-right
+									if canEditProject project._id
+										a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit
+							div.row
+								div.col-sm-12
+									p.text-right 
+										strong {{daysRemaining project.timePeriods.endDate}}
+										| days left
+									h1.display-4 #{project.title}
+							div.row
+								div.col-sm-6
+									p.lead #{project.qa.summary}
+								div.col-sm-6
+									
+									+progressBar(project=project)
+									a.btn.btn-primary(href="#paymentInfo") Support this project
+				div.row
+					div.col-sm-12
+						h4 Why is this useful?
+						p #{project.qa.whyUseful}
+				div.row
+					div.col-sm-12
+						h4 Approximately, how much time of research will this cover?
+						p #{project.qa.howMuchTime}
+				div.row
+					div.col-sm-12
+						h4 How will the funds be spent?
+						p #{project.qa.howFundsWillbeSpent}
+				div.row
+					div.col-sm-12
+						h4 Description
+						p #{project.qa.description}
+				div.row
+					div.col-sm-6
+						h4 Contact
+						p
+							table
+								tr
+									td Phone:
+									td #{project.contact.phone}
+								tr
+									td Email:
+									td #{project.contact.email}
+					div.col-sm-6#paymentInfo
+						h4 How to Support
+						p.mark
+							table
+								tr
+									td Send Bitcoin: &nbsp;
+									td #{project.cryptoAddresses.BTC}
+								tr
+									td Send Ether: &nbsp;
+									td #{project.cryptoAddresses.ETH}
+								if project.acceptsFiat
+									tr
+										td Wire Transfer: &nbsp;
+										td [how to donate to bank account]
+								//- tr
+									td Activate your Network: &nbsp;
+									td
+										| [fb]
+										| [tw]
+										//- | [hn?]
+						//- unless canEditProject project._id
+							p.text-right
+								a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectDonationNew' projectId=project._id}}") Claim a donation
+				div.row
+					div.col-sm-12
+						h4 Donor List
+						p
+							|When you donate cryptocurrency, your contribution is automatically reflected in the campaign total.
+							| In addition, you can
+							a(href="{{pathFor 'projectDonationNew' projectId=project._id}}") claim your donation
+							|and get listed as a contributor, if you want.
+					div.col-sm-12
+						if donations.count
+							p
+								each donation in donations
+									span.badge.badge-secondary &nbsp;#{donation.title}&nbsp;
+									|&nbsp;
 
-				else
-					p All of the donors are currently anonymous.
+						else
+							p All of the donors are currently anonymous.
+		else
+			+error404
+	else
+		+loader

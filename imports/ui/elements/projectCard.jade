@@ -29,7 +29,9 @@ template(name="projectCard")
 			hr
 			div.row
 				div.col-sm-12
+					p.text-right 
+						strong {{daysRemaining project.timePeriods.endDate}}
+						| days left
 					+progressBar(project=project)
 				div.col-sm-12
 					a.btn.btn-primary(href="{{pathFor 'projectShow' projectId=project._id}}#title") Support this project
-				

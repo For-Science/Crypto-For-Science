@@ -89,3 +89,14 @@ Template.registerHelper('isActiveRoute_Tab', function(routeName) {
 		return ""
 	}
 });
+
+Template.registerHelper( "daysRemaining", (endDate) => {
+	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+	var today = new Date();
+
+	today.setHours(0, 0, 0)
+	endDate.setHours(0, 0, 0);
+
+	var diffDays = Math.round(Math.abs((endDate.getTime() - today.getTime())/(oneDay)));
+	return diffDays
+})

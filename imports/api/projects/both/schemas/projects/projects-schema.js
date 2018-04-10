@@ -139,6 +139,16 @@ const projectTimePeriodSchema = new SimpleSchema({
     max: 60,
     optional: false
 	},
+	startDate : {
+		type: Date,
+    optional: true,
+    denyInsert: true
+	},
+	endDate : {
+		type: Date,
+    optional: true,
+    denyInsert: true
+	},
 })
 
 const projectGoalsSchema = new SimpleSchema({

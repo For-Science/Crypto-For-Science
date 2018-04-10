@@ -22,7 +22,7 @@ Template.projectShow.onDestroyed(function() {})
 
 Template.projectShow.helpers({
   project() {
-		return Projects.findOne({ _id: Template.instance().getProjectID() }) || {}
+		return Projects.findOne({ _id: Template.instance().getProjectID() }) || false
   },
 	donations() {
 		return Donations.find({},{ sort: { createdAt: -1 } })

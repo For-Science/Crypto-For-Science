@@ -5,7 +5,7 @@ import { Accounts } from "meteor/accounts-base"
 import { Projects } from "/imports/api/projects/both/project-collection.js"
 import { ExternalFunds } from "/imports/api/externalFunds/both/externalFunds-collection.js"
 // ***************************************************************
-// Fixtures (generate dummy data for the Documents collection)
+// Fixtures (generate dummy data)
 // ***************************************************************
 
 let publishProject = (projectId) => {
@@ -43,6 +43,29 @@ let featureProject = (projectId) => {
 	);
 }
 
+let setEndDate = (projectId, numDays, percentComplete) => {
+	let startDate = new Date();
+	let endDate = new Date();
+	startDate.setDate(startDate.getDate()-(numDays*( percentComplete )));
+	endDate.setDate(endDate.getDate()+(numDays*( 1 - percentComplete )));
+
+	Projects.update(
+		projectId,
+		{
+			$set: {
+				"timePeriods.startDate": startDate,
+				"timePeriods.endDate": endDate,
+			}
+	  },
+	  function(error, result) {
+	    if (error) {
+	      throw new Meteor.Error(500, "Server error")
+	    }
+	  }
+	);
+
+}
+
 let addExternalFundsforProject = (totalRaised, project_id) => {
 	ExternalFunds.insert(
 		{
@@ -54,6 +77,8 @@ let addExternalFundsforProject = (totalRaised, project_id) => {
 }
 
 Meteor.startup(() => {
+
+
 
 	if (Meteor.users.find().count() === 0) { 	// seed 'administrator' role user
 																						// so that new admins can be added via database
@@ -88,8 +113,8 @@ Meteor.startup(() => {
 						"timePeriod" : 30
 				},
 				"cryptoAddresses" : {
-						"ETH" : "0xffdvggv76ffv6vgj97khbcvubgjvkhb8khb6tjkh",
-						"BTC" : "bc1q976ffvuvvutdvgjkhbvgkhb76hbgvjkhbgjvk8"
+					"ETH" : "[etherium address for the project, if this were real]",
+					"BTC" : "[bitcoin address for the project, if this were real]",
 				},
 				"contact" : {
 						"contactName" : "Joseph Allen",
@@ -102,9 +127,11 @@ Meteor.startup(() => {
           throw new Meteor.Error(500, "Server error")
         }
 				else{
+
 					featureProject(project_id) // publish and feature the project
 					// add ExternalFunds for Project
 					let newProject = Projects.findOne({"_id" : project_id})
+					setEndDate(project_id, newProject.timePeriods.timePeriod, .25);
 					if(newProject.raised.totalRaised > 0){
 						addExternalFundsforProject(newProject.raised.totalRaised, project_id);
 					}
@@ -160,8 +187,8 @@ Meteor.startup(() => {
 						"timePeriod" : 30
 				},
 				"cryptoAddresses" : {
-						"ETH" : "0xffdvgj97khbvggv76ffv6cvu8khb6tjkhbgjvkhb",
-						"BTC" : "bc1qdvgjkhbvgkhbgvjkhbgjvkhb768976ffvuvvut",
+						"ETH" : "[etherium address for the project, if this were real]",
+						"BTC" : "[bitcoin address for the project, if this were real]",
 				},
 				"contact" : {
 						"contactName" : "Sandra Johnson",
@@ -177,6 +204,7 @@ Meteor.startup(() => {
 					publishProject(project_id) // just publish it, don't feature it
 					// add ExternalFunds for Project
 					let newProject = Projects.findOne({"_id" : project_id})
+					setEndDate(project_id, newProject.timePeriods.timePeriod, .75);
 					if(newProject.raised.totalRaised > 0){
 						addExternalFundsforProject(newProject.raised.totalRaised, project_id);
 					}
