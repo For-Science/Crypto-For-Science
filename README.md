@@ -7,10 +7,8 @@ The code from this repository will be online at: [https://cryptoforscience.com](
 ## Usage
 1. `git clone https://github.com/For-Science/Crypto-For-Science.git ./cryptoforscience`
 2. `cd cryptoforscience`
-3. Remove the .git folder
-4. `git init`
-6. `meteor npm install --save`
-7. `meteor`
+3. `meteor npm install --save`
+4. `meteor`
 
 ### Default admin account
 
