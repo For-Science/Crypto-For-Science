@@ -1,0 +1,33 @@
+template(name="projectDonationClaimNew")
+	.project-donationClaims-new
+		.card
+			h2.card-title.card-header Claim your donation 
+			.card-body
+				if Template.subscriptionsReady
+					//- h4.card-subtitle #{projectName}
+					//- br
+					h6.card-subtitle 
+						|Claim your donation to get listed as one of the donors for "
+						span.text-muted #{projectName}
+						|". You don't have to claim a donation for it to be included in the campaign's fundraising total.
+					br
+					hr
+					br
+					+autoForm schema=createDonationClaimSchema id="donationClaimNewForm" type="method" meteormethod="donationClaims.create"
+						+afQuickField name='title'
+						br
+						h6.card-subtitle.text-muted. 
+							Verification
+						+afQuickField name='content' rows=2
+						+afQuickField name='projectId' readonly=true value=projectId type='hidden'
+						+afQuickField name='userId' readonly=true value=currentUser._id type='hidden'
+						br
+						h6.card-subtitle.
+							Your claim will go to the project owner, who will verify and approve. 
+							Only your name, or the text you want to show instead, will appear on the donor list.
+						br
+						//- +afQuickField name='projectId' readonly=true type='hidden'
+						//- ^ basically a textbox with instructions on how to claim
+						button.btn.btn-primary(type="submit") Claim your donation
+						a.btn.btn-link(role="button" href="{{pathFor 'projectShow' projectId=projectId}}") Back
+						//- ( href="{{pathFor 'projectShow' projectId=project._id}}#title" )
