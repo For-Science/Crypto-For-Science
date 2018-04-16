@@ -1,15 +1,15 @@
 import { Mongo } from "meteor/mongo"
 
-import DonationSchema from "./schemas/donation/donation-schema"
+import DonationClaimSchema from "./schemas/donation/donation-claim-schema"
 
 // ***************************************************************
 // DONATIONS Collection
 // ***************************************************************
 
-export const Donations = new Mongo.Collection("donations")
+export const DonationClaims = new Mongo.Collection("donationClaims")
 
 // We use explicit methods, so deny everything
-Donations.allow({
+DonationClaims.allow({
   insert() {
     return false
   },
@@ -21,7 +21,7 @@ Donations.allow({
   }
 })
 
-Donations.deny({
+DonationClaims.deny({
   insert() {
     return true
   },
@@ -34,4 +34,4 @@ Donations.deny({
 })
 
 // Must remember to attach the schema to the collection
-Donations.attachSchema(DonationSchema)
+DonationClaims.attachSchema(DonationClaimSchema)

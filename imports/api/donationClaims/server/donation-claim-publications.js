@@ -1,37 +1,37 @@
 import { Meteor } from "meteor/meteor"
 import SimpleSchema from "simpl-schema"
 
-import { Donations } from "../both/donation-collection.js"
+import { DonationClaims } from "../both/donation-claim-collection.js"
 
 import * as permissions from "/imports/modules/permissions.js"
 
 // ***************************************************************
-// PUBLICATIONS (For the donations collection)
+// PUBLICATIONS (For the donation claims collection)
 // ***************************************************************
 
-// DONATIONS INDEX
+// DONATIONS_CLAIMS INDEX
 // -------------------------------------------------------
-Meteor.publish("donations.all", function donationsAll() {
-	if( permissions.isAdmin() ){
-	  return Donations.find()
+Meteor.publish("donationClaims.all", function donationClaimsAll() {
+	if (permissions.isAdmin()) {
+		return DonationClaims.find()
 	}
-	else{
+	else {
 		return
 	}
 })
 
-// DONATIONS CAN MANAGE
+// DONATION CLAIMS CAN MANAGE
 // -------------------------------------------------------
-Meteor.publish("donations.canManage", function donationsCanManage(projectId) {
-	if( permissions.canEditProject(projectId) ){
-		return Donations.find({"projectId":projectId})
+Meteor.publish("donationClaims.canManage", function donationClaimsCanManage(projectId) {
+	if (permissions.canEditProject(projectId)) {
+		return DonationClaims.find({ "projectId": projectId })
 	}
 })
 
-// DONATIONS SHOW
+// DONATION CLAIMS SHOW
 // -------------------------------------------------------
-Meteor.publish("donations.forProject", function donationsForProject(projectId) {
-	return Donations.find({"projectId" : projectId, "reviewed" : true, "approved" : true })
+Meteor.publish("donationClaims.forProject", function donationClaimsForProject(projectId) {
+	return DonationClaims.find({ "projectId": projectId, "reviewed": true, "approved": true })
 })
 
 

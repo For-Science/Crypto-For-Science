@@ -3,7 +3,7 @@ import { Mongo } from "meteor/mongo"
 import ExternalFundsSchema from "./schemas/externalFunds/externalFunds-schema"
 
 // ***************************************************************
-// DONATIONS Collection
+// DONATION CLAIMS Collection
 // ***************************************************************
 
 export const ExternalFunds = new Mongo.Collection("externalFunds")

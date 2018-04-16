@@ -77,20 +77,20 @@ template(name="projectShow")
 										//- | [hn?]
 						//- unless canEditProject project._id
 							p.text-right
-								a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectDonationNew' projectId=project._id}}") Claim a donation
+								a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectDonationClaimNew' projectId=project._id}}") Claim a donation
 				div.row
 					div.col-sm-12
 						h4 Donor List
 						p
 							|When you donate cryptocurrency, your contribution is automatically reflected in the campaign total.
 							| In addition, you can
-							a(href="{{pathFor 'projectDonationNew' projectId=project._id}}") claim your donation
+							a(href="{{pathFor 'projectDonationClaimNew' projectId=project._id}}") claim your donation
 							|and get listed as a contributor, if you want.
 					div.col-sm-12
-						if donations.count
+						if donationClaims.count
 							p
-								each donation in donations
-									span.badge.badge-secondary &nbsp;#{donation.title}&nbsp;
+								each donationClaim in donationClaims
+									span.badge.badge-secondary &nbsp;#{donationClaim.title}&nbsp;
 									|&nbsp;
 
 						else

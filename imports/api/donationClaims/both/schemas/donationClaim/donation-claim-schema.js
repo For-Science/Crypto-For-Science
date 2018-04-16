@@ -1,16 +1,16 @@
 import SimpleSchema from "simpl-schema"
 
 // ***************************************************************
-// DONATION schema
+// DONATION_CLAIM schema
 // ***************************************************************
 
-const DonationSchema = new SimpleSchema({
-	_id: {
-		type: String,
+const DonationClaimSchema = new SimpleSchema({
+  _id: {
+    type: String,
     optional: true,
-		denyUpdate: true,
-		// denyInsert: true,
-	},
+    denyUpdate: true,
+    // denyInsert: true,
+  },
   title: {
     type: String,
     label: "Your name, or the the text you want to show in the donor list.",
@@ -22,37 +22,37 @@ const DonationSchema = new SimpleSchema({
 						If you made a wire transfer, enter where it came from, and the amount.`,
     optional: false
   },
-	projectId: {
-		type: String,
+  projectId: {
+    type: String,
     optional: false
   },
-	userId: {
-		type: String,
-		optional: true // for now it's optional to have a userId
+  userId: {
+    type: String,
+    optional: true // for now it's optional to have a userId
   },
-	reviewed : {
-		type: Boolean,
-		optional:true,
-		autoValue: function() {
+  reviewed: {
+    type: Boolean,
+    optional: true,
+    autoValue: function () {
       if (this.isInsert) {
         return false
       }
     }
-	},
-	approved : {
-		type: Boolean,
-		optional:true,
-		autoValue: function() {
+  },
+  approved: {
+    type: Boolean,
+    optional: true,
+    autoValue: function () {
       if (this.isInsert) {
         return false
       }
     }
-	},
+  },
   createdAt: {
     type: Date,
     optional: true,
     denyUpdate: true,
-    autoValue: function() {
+    autoValue: function () {
       if (this.isInsert) {
         return new Date()
       }
@@ -62,7 +62,7 @@ const DonationSchema = new SimpleSchema({
     type: Date,
     optional: true,
     denyInsert: true,
-    autoValue: function() {
+    autoValue: function () {
       if (this.isUpdate) {
         return new Date()
       }
@@ -70,4 +70,4 @@ const DonationSchema = new SimpleSchema({
   }
 })
 
-export default DonationSchema
+export default DonationClaimSchema

@@ -7,17 +7,17 @@ template(name="projectDonationClaimsAdmin")
 		|However if a donor pays you externally (say, with cash or wire transfer), 
 		|then to add that amount to the campaign total you need to 
 		a(href="{{pathFor 'projectExternalFundsAdmin' projectId=project._id}}" role="button") add the external funding on the External Funds page.	
-	if donations.count
+	if donationClaims.count
 		ul.list-group
-			each donation in donations
-				+donationListItem(donation=donation)
+			each donationClaim in donationClaims
+				+donationClaimListItem(donationClaim=donationClaim)
 	else
 		.alert.alert-primary(role="alert")
 			|Nobody has submitted a donation claim for this project.
 	a.btn.btn-link(role="button" href="{{pathFor 'settings_myProjects'}}") Back
 			
-template(name="donationListItem")
-	+with(donation)
+template(name="donationClaimListItem")
+	+with(donationClaim)
 		li.list-group-item
 			.row
 				.col-6 
@@ -44,13 +44,13 @@ template(name="donationListItem")
 							span.badge.badge-light approved
 							//- |approved &nbsp;&nbsp;
 							|&nbsp;&nbsp;
-							a.btn.btn-sm.btn-danger.rejectDonation(href="#" role="button") Reject
+							a.btn.btn-sm.btn-danger.rejectDonationClaim(href="#" role="button") Reject
 						else
 							span.badge.badge-light rejected
 							|&nbsp;&nbsp;
 							//- |rejected &nbsp;&nbsp;
-							a.btn.btn-sm.btn-primary.approveDonation(href="#" role="button") Approve
+							a.btn.btn-sm.btn-primary.approveDonationClaim(href="#" role="button") Approve
 					else 
-						a.btn.btn-sm.btn-primary.approveDonation(href="#" role="button") Approve
+						a.btn.btn-sm.btn-primary.approveDonationClaim(href="#" role="button") Approve
 						|&nbsp;
-						a.btn.btn-sm.btn-danger.rejectDonation(href="#" role="button") Reject
+						a.btn.btn-sm.btn-danger.rejectDonationClaim(href="#" role="button") Reject

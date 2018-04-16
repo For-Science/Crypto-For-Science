@@ -7,8 +7,8 @@ import "/imports/ui/components/projects/show/project-show.js"
 import "/imports/ui/components/projects/edit/project-edit.js"
 
 // project donations
-import "/imports/ui/components/donations/new/donationClaims-new.js"
-import "/imports/ui/components/donations/admin/donationClaims-admin.js"
+import "/imports/ui/components/donationClaims/new/donationClaims-new.js"
+import "/imports/ui/components/donationClaims/admin/donationClaims-admin.js"
 
 // project external funds
 import "/imports/ui/components/externalFunds/new/externalFunds-new.js"
@@ -21,7 +21,7 @@ import "/imports/ui/components/externalFunds/admin/externalFunds-admin.js"
 // PROJECTS INDEX
 // -------------------------------------------------------
 FlowRouter.route("/projects", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "projectsIndex",
@@ -34,7 +34,7 @@ FlowRouter.route("/projects", {
 // PROJECT NEW
 // -------------------------------------------------------
 FlowRouter.route("/projects/new", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "projectNew",
@@ -47,8 +47,8 @@ FlowRouter.route("/projects/new", {
 // PROJECT SHOW
 // -------------------------------------------------------
 FlowRouter.route("/projects/:projectId", {
-// FlowRouter.route("/projects/single", {
-  action: function() {
+  // FlowRouter.route("/projects/single", {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "projectShow",
@@ -61,7 +61,7 @@ FlowRouter.route("/projects/:projectId", {
 // PROJECT EDIT
 // -------------------------------------------------------
 FlowRouter.route("/projects/:projectId/edit", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "projectEdit",
@@ -74,21 +74,21 @@ FlowRouter.route("/projects/:projectId/edit", {
 
 // projectDonationClaim
 // -------------------------------------------------------
-FlowRouter.route("/projects/:projectId/claimADonation", {
-  action: function() {
+FlowRouter.route("/projects/:projectId/claimADonationClaim", {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
-      main: "projectDonationNew",
+      main: "projectDonationClaimNew",
       footer: "footer"
     })
   },
-  name: "projectDonationNew"
+  name: "projectDonationClaimNew"
 })
 
 // projectDonationClaimsAdmin
 // -------------------------------------------------------
 FlowRouter.route("/projects/:projectId/manageClaims", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "projectDonationClaimsAdmin",
@@ -101,7 +101,7 @@ FlowRouter.route("/projects/:projectId/manageClaims", {
 // projectExternalFundsAdmin
 // -------------------------------------------------------
 FlowRouter.route("/projects/:projectId/manageExternalFunds", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "projectExternalFundsAdmin",
@@ -114,7 +114,7 @@ FlowRouter.route("/projects/:projectId/manageExternalFunds", {
 // projectExternalFundsNew
 // -------------------------------------------------------
 FlowRouter.route("/projects/:projectId/addExternalFunds", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "projectExternalFundsNew",

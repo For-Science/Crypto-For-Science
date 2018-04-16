@@ -1,5 +1,5 @@
-template(name="projectDonationNew")
-	.project-donations-new
+template(name="projectDonationClaimNew")
+	.project-donationClaims-new
 		.card
 			h2.card-title.card-header Claim your donation 
 			.card-body
@@ -13,7 +13,7 @@ template(name="projectDonationNew")
 					br
 					hr
 					br
-					+autoForm schema=createDonationSchema id="donationNewForm" type="method" meteormethod="donations.create"
+					+autoForm schema=createDonationClaimSchema id="donationClaimNewForm" type="method" meteormethod="donationClaims.create"
 						+afQuickField name='title'
 						br
 						h6.card-subtitle.text-muted. 

@@ -8,7 +8,7 @@ import { notify } from "/imports/modules/notifier"
 // ***************************************************************
 
 // Shows a simple message and re-routes if successful
-AutoForm.addHooks(["donationNewForm"], {
+AutoForm.addHooks(["donationClaimNewForm"], {
   after: {
     method: (error, result) => {
       if (error) {

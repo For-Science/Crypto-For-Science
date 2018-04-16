@@ -2,8 +2,8 @@ import { Meteor } from "meteor/meteor"
 import SimpleSchema from "simpl-schema"
 import { ValidatedMethod } from "meteor/mdg:validated-method"
 
-import { Donations } from "../both/donation-collection.js"
-import DonationSchema from "./schemas/donation/donation-schema"
+import { DonationClaims } from "../both/donation-claim-collection"
+import DonationClaimSchema from "./schemas/donation/donation-claim-schema"
 
 import * as permissions from "/imports/modules/permissions.js"
 
@@ -11,85 +11,85 @@ import * as permissions from "/imports/modules/permissions.js"
 // METHODS (related to the donations (claims) collection)
 // ***************************************************************
 
-export const createDonation = new ValidatedMethod({
-  name: "donations.create",
-  validate: DonationSchema.validator(),
-  run(donation) {
-    // Additional data verification
+export const createDonationClaim = new ValidatedMethod({
+	name: "donationClaims.create",
+	validate: DonationClaimSchema.validator(),
+	run(donationClaim) {
+		// Additional data verification
 
-		if(donation.userId != this.userId){
-			throw new Meteor.Error('donations.create',
-        `User can't submit a donation for a different user.`);
+		if (donationClaim.userId != this.userId) {
+			throw new Meteor.Error('donationsClaims.create',
+				`User can't submit a donation claim for a different user.`);
 		}
 
-    return Donations.insert(
-      donation,
-      function(error, result) {
-        if (error) {
+		return DonationClaims.insert(
+			donationClaim,
+			function (error, result) {
+				if (error) {
 					// console.log(error);
-          throw new Meteor.Error(500, "Server error")
-        }
-      }
-    )
-  }
+					throw new Meteor.Error(500, "Server error")
+				}
+			}
+		)
+	}
 })
 
-export const approveDonation = new ValidatedMethod({
-  name: "donation.approve",
-  validate: DonationSchema.validator(),
-  run(donation) {
-    // Additional data verification
+export const approveDonationClaim = new ValidatedMethod({
+	name: "donation-claim.approve",
+	validate: DonationClaimSchema.validator(),
+	run(donationClaim) {
+		// Additional data verification
 
 		// validate that they have the permissions needed to approve this donation claim
-		if (!permissions.canEditProject(donation.projectId)) {
+		if (!permissions.canEditProject(donationClaim.projectId)) {
 			throw new Meteor.Error('projects.create',
-        "Does not have necessary permissions to edit project");
+				"Does not have necessary permissions to edit project");
 		}
 
-		Donations.update(
-			{_id : donation._id, projectId : donation.projectId},
+		DonationClaims.update(
+			{ _id: donationClaim._id, projectId: donationClaim.projectId },
 			{
 				$set: {
 					reviewed: true,
 					approved: true,
 				}
-	    },
-	    function(error, result) {
-	      if (error) {
-	        throw new Meteor.Error(500, "Server error")
-	      }
-	    }
+			},
+			function (error, result) {
+				if (error) {
+					throw new Meteor.Error(500, "Server error")
+				}
+			}
 		);
 	}
 })
 
-export const rejectDonation = new ValidatedMethod({
-  name: "donation.reject",
-  validate: DonationSchema.validator(),
-  run(donation) {
-    // Additional data verification
+export const rejectDonationClaim = new ValidatedMethod({
+	name: "donationClaim.reject",
+	validate: DonationClaimSchema.validator(),
+	run(donationClaim) {
+		// Additional data verification
 
 		// validate that they have the permissions needed to approve this donation claim
-		const donationRead = Donations.findOne(donation._id);
+		const donationClaimRead = DonationClaims.findOne(donation._id);
 
-		if (!permissions.canEditProject(donation.projectId)) {
+		if (!permissions.canEditProject(donationClaims.projectId)) {
 			throw new Meteor.Error('projects.create',
-        "Does not have necessary permissions to edit project");
+				"Does not have necessary permissions to edit project");
 		}
 
-		Donations.update(
-			{_id : donation._id, projectId : donation.projectId},
+		DonationClaims.update(
+			{ _id: donationClaims._id, projectId: donationClaims.projectId },
 			{
 				$set: {
 					reviewed: true,
 					approved: false,
 				}
-	    },
-	    function(error, result) {
-	      if (error) {
-	        throw new Meteor.Error(500, "Server error")
-	      }
-	    }
+			},
+			function (error, result) {
+				if (error) {
+					throw new Meteor.Error(500, "Server error")
+				}
+			}
 		);
 	}
 })

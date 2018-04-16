@@ -11,7 +11,7 @@ import "/imports/ui/pages/settings/settings.js"
 // SETTINGS
 // -------------------------------------------------------
 FlowRouter.route("/settings/myProjects", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "settings",
@@ -21,21 +21,21 @@ FlowRouter.route("/settings/myProjects", {
   name: "settings_myProjects"
 })
 
-// MY DONATIONS
-FlowRouter.route("/settings/myDonations", {
-  action: function() {
+// MY DONATION CLAIMS
+FlowRouter.route("/settings/myDonationClaims", {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "settings",
       footer: "footer"
     })
   },
-  name: "settings_myDonations"
+  name: "settings_myDonationClaims"
 })
 
 // ADMIN
 FlowRouter.route("/settings/admin", {
-  action: function() {
+  action: function () {
     BlazeLayout.render("layout", {
       header: "header",
       main: "settings",
