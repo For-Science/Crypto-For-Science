@@ -1,6 +1,6 @@
 import { Mongo } from "meteor/mongo"
 
-import DonationClaimSchema from "./schemas/donation/donation-claim-schema"
+import DonationClaimSchema from "./schemas/donationClaim/donation-claim-schema"
 
 // ***************************************************************
 // DONATIONS Collection

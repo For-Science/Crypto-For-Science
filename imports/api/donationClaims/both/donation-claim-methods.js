@@ -3,7 +3,7 @@ import SimpleSchema from "simpl-schema"
 import { ValidatedMethod } from "meteor/mdg:validated-method"
 
 import { DonationClaims } from "../both/donation-claim-collection"
-import DonationClaimSchema from "./schemas/donation/donation-claim-schema"
+import DonationClaimSchema from "./schemas/donationClaim/donation-claim-schema"
 
 import * as permissions from "/imports/modules/permissions.js"
 
