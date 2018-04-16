@@ -44,7 +44,7 @@ Template.pendingCampaignListItem.events({
 Template.approveProjectButton.events({
 	"click .approveProject" : (e,t) =>{
 		let project = Blaze.getData(e.currentTarget);
-		console.log(project);
+		// console.log(project);
 		projectMethods.approveProject.call(
 			project,
 			(err, res) => {
@@ -60,7 +60,7 @@ Template.approveProjectButton.events({
 Template.rejectProjectButton.events({
 	"click .rejectProject" : (e,t) =>{
 		let project = Blaze.getData(e.currentTarget);
-		console.log(project);
+		// console.log(project);
 		projectMethods.rejectProject.call(
 			project,
 			(err, res) => {
@@ -76,7 +76,7 @@ Template.rejectProjectButton.events({
 Template.featureProjectButton.events({
 	"click .featureProject" : (e,t) =>{
 		let project = Blaze.getData(e.currentTarget);
-		console.log(project);
+		// console.log(project);
 		projectMethods.featureProject.call(
 			project,
 			(err, res) => {
@@ -92,7 +92,7 @@ Template.featureProjectButton.events({
 Template.unfeatureProjectButton.events({
 	"click .unfeatureProject" : (e,t) =>{
 		let project = Blaze.getData(e.currentTarget);
-		console.log(project);
+		// console.log(project);
 		projectMethods.unfeatureProject.call(
 			project,
 			(err, res) => {
