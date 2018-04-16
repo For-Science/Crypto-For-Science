@@ -132,10 +132,7 @@ export const approveProject = new ValidatedMethod({
 		let startDate = new Date();
 		let endDate = new Date();
 		let readProject = Projects.findOne({"_id" : project._id}); // read from db, screw the client
-		endDate.setDate(endDate.getDate()+numDays);
-
-		console.log("the endDate:");
-		console.log(dateTime);
+		endDate.setDate(endDate.getDate() + readProject.timePeriods.timePeriod);
 
 		Projects.update(
 			project._id,
