@@ -1,0 +1,212 @@
+// bootsrtap variables
+@import "{}/imports/ui/stylesheets/bootstrap/bootstrap_variables.scss";
+
+// include font-awesome in the app
+// 		(also make sure the directory is in scss-config.json,
+// 		and do an npm install to install the fonts into /public)
+@import "{}/node_modules/font-awesome/scss/font-awesome.scss";
+
+a.nav-link{
+	i{
+		position: relative;
+		.notification{
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			color: $red;
+		}
+	}
+}
+
+i{
+	font-family: FontAwesome;
+	font-style: normal;
+}
+
+.jumbotron{
+	background-color: #e7faff;
+}
+
+.card{
+	.jumbotron{
+		margin-bottom: 0;
+		padding-top: 2rem;
+		padding-bottom: .8rem;
+	}
+	margin-bottom: 30px;
+	p.card-text{
+		line-height: 1.2em;
+		height: 6em;
+		overflow: hidden;
+		color: $gray-700;
+		&:after{
+			content: "";
+		  text-align: right;
+		  position: absolute;
+		  bottom: 0;
+		  right: 0;
+		  width: 100%;
+		  height: 1.2em;
+		  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 100%);
+		}
+	}
+	a.headerLink{
+		color: $dark;
+	}
+}
+
+nav.navbar{
+	ul{
+		&.right-pad-nav{
+			margin-right: 185px;
+		}
+		li#login-dropdown-list{
+			a.dropdown-toggle{
+				display: block;
+				padding: 0.5rem 1rem 0.5rem 0;
+				color: rgba(255, 255, 255, 0.75);
+				&:hover{
+					color: rgba(255, 255, 255, 1);
+				}
+			}
+			.dropdown-menu{
+				// margin-right: 1rem;
+				#login-other-options{
+					a{
+						-webkit-box-flex: 0;
+						-webkit-flex: 0 0 100%;
+						-ms-flex: 0 0 100%;
+						flex: 0 0 100%;
+						max-width: 100%;
+						width: 100%;
+					}
+					a#forgot-password-link{
+						float: none;
+					}
+					a#forgot-password-link, a#signup-link{
+						display: inline-block;
+					  font-weight: $btn-font-weight;
+					  text-align: center;
+					  white-space: nowrap;
+					  vertical-align: middle;
+					  user-select: none;
+					  border: $btn-border-width solid transparent;
+					  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+					  @include transition($btn-transition);
+
+					  // Share hover and focus styles
+					  @include hover-focus {
+					    text-decoration: none;
+					  }
+
+					  &:focus,
+					  &.focus {
+					    outline: 0;
+					    box-shadow: $btn-focus-box-shadow;
+					  }
+
+					  // Disabled comes first so active can properly restyle
+					  &.disabled,
+					  &:disabled {
+					    opacity: $btn-disabled-opacity;
+					    @include box-shadow(none);
+					  }
+
+					  // Opinionated: add "hand" cursor to non-disabled .btn elements
+					  &:not(:disabled):not(.disabled) {
+					    cursor: pointer;
+					  }
+
+					  &:not(:disabled):not(.disabled):active,
+					  &:not(:disabled):not(.disabled).active {
+					    background-image: none;
+					    @include box-shadow($btn-active-box-shadow);
+
+					    &:focus {
+					      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+					    }
+					  }
+
+						color: #fff;
+						background-color: #545b62;
+						border-color: #4e555b;
+						&:hover{
+							color: #fff;
+							background-color: #5a6268;
+							border-color: #545b62;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.featuredIcon{
+	color: $blue;
+}
+
+
+
+// nav tabs
+
+$padding-base: 15px;
+$color-body: #fff;
+$color-border: #ddd;
+$color-link: #0275d8;
+$border-radius: .25rem;
+
+.nav-tabs {
+	&--vertical {
+		border-bottom: none;
+		border-right: 1px solid $color-border;
+		display: flex;
+		flex-flow: column nowrap;
+	}
+
+	&--left {
+		margin: 0 $padding-base;
+
+		.nav-item + .nav-item {
+			margin-top: .25rem;
+		}
+
+		.nav-link {
+			transition: border-color .125s ease-in;
+			white-space: nowrap;
+
+			&:hover {
+				background-color: lighten($color-border, 10%);
+				border-color: transparent;
+			}
+		}
+
+		.nav-link.active {
+			border-bottom-color: $color-border;
+			border-right-color: $color-body;
+			border-bottom-left-radius: $border-radius;
+			border-top-right-radius: 0;
+			margin-right: -1px;
+
+			&:hover {
+				background-color: $color-body;
+				border-color: $color-link $color-body $color-link $color-link;
+			}
+		}
+	}
+}
+
+.btn{
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+.projectCard{
+	.projectCard-jumbotron{
+		padding-top: 15px;
+	}
+}
+
+.progressBarContainer{
+	margin-bottom: 10px;
+}

@@ -1,0 +1,37 @@
+template(name="projectCard")
+	//- a(href="/projects/#{project._ID}")
+	div.card.projectCard
+		div.row
+			div.col-sm-12
+				a.headerLink(href="{{pathFor 'projectShow' projectId=project._id}}#title")
+					div.jumbotron.jumbotron-fluid.projectCard-jumbotron
+						div.container
+							div.row
+								div.col-sm-12
+									h5.text-right
+										if project.bools.isFeatured
+											i.fas.fa-star.featuredIcon
+										else
+											|&nbsp;
+									h5.card-title #{project.title}
+								//- siv.col-sm-2
+									
+		div.card-body
+			//- div.row
+				div.col-sm-12
+					a(href="{{pathFor 'projectShow' projectId=project._id}}#title")
+						h5.card-title #{project.title}
+			//- hr
+			div.row
+				div.col-sm-12
+					a.headerLink(href="{{pathFor 'projectShow' projectId=project._id}}#title")
+						p.card-text #{project.qa.summary}
+			hr
+			div.row
+				div.col-sm-12
+					p.text-right 
+						strong {{daysRemaining project.timePeriods.endDate}}
+						| days left
+					+progressBar(project=project)
+				div.col-sm-12
+					a.btn.btn-primary(href="{{pathFor 'projectShow' projectId=project._id}}#title") Support this project

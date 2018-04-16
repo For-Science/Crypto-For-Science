@@ -1,0 +1,138 @@
+template(name="settings")
+	div.container
+		div.row
+			div.col-sm-12
+				h1 Manage
+		.d-flex.flex-row.mt-2
+			ul.nav.nav-tabs.nav-tabs--vertical.nav-tabs--left(role='navigation')
+				li.nav-item
+					a.nav-link(class="{{isActiveRoute 'settings_myProjects'}}" href="{{pathFor 'settings_myProjects'}}") My Campaigns
+				//- li.nav-item
+					a.nav-link(class="{{isActiveRoute 'settings_myDonations'}}" href="{{pathFor 'settings_myDonations'}}") My Donations
+				//- li.nav-item
+				//- 	a.nav-link.disabled(href='#dolor', data-toggle='tab', role='tab', aria-controls='dolor') Dolor
+				if isAdmin
+					li.nav-item
+						a.nav-link(class="{{isActiveRoute 'settings_admin'}}" href="{{pathFor 'settings_admin'}}") CFS Admin
+			.tab-content.w-100
+				+settings_myProjects
+				+settings_myDonations
+				+settings_admin
+
+template(name="settings_myProjects")
+	#myProjects.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_myProjects'}}")
+		h5 Campaigns
+		ul.list-group
+			if projects.count
+				each project in projects
+					li.list-group-item
+						.row
+							.col-4
+								if project.bools.approved
+									a(href="{{pathFor 'projectShow' projectId=project._id}}") #{project.title}
+								else
+									p #{project.title}
+								+progressBar(project=project)
+								if project.bools.reviewed
+									if project.bools.approved
+										span.badge.badge-success approved
+									else
+										span.badge.badge-danger denied
+								else
+									span.badge.badge-secondary pending review
+							.col-8.text-right
+								if project.bools.approved
+									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit info
+									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectExternalFundsAdmin' projectId=project._id}}" role="button") Add external funding
+									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectDonationClaimsAdmin' projectId=project._id}}" role="button") Manage donation claims
+									//- a.btn.btn-sm.btn-secondary(href="#" role="button") End Campaign
+			else
+				p You don't have any fundraising campaigns.
+			a.btn.btn-primary.btn-lg(href="{{pathFor 'projectNew'}}" role="button")
+				|Submit a new project
+
+template(name="settings_myDonations")
+	#myDonations.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_myDonations'}}")
+		h2 My Donations
+		p
+			| [ list of donations ]
+
+template(name="settings_admin")
+	#admin.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_admin'}}")
+		h2 Campaigns
+
+		h5 Pending Review
+		if projectsPending.count
+			ul.list-group
+				each project in projectsPending
+					+pendingCampaignListItem(project=project)
+		else
+			.alert.alert-primary(role="alert")
+				|There are no campaigns pending review.
+
+		br
+		h5 Active
+		if projectsActive.count
+			ul.list-group
+				each project in projectsActive
+					+activeCampaignListItem(project=project)
+		else
+			.alert.alert-primary(role="alert")
+				|There are no active campaigns.
+
+		br
+		h5 Rejected
+		if projectsRejected.count
+			ul.list-group
+				each project in projectsRejected
+					+rejectedCampaignListItem(project=project)
+		else
+			.alert.alert-primary(role="alert")
+				|There are no rejected campaigns.
+
+
+template(name="pendingCampaignListItem")
+	+with(project)
+		li.list-group-item
+			.row
+				.col-6
+					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+				.col-6.text-right
+					+approveProjectButton
+					|&nbsp;
+					+rejectProjectButton
+
+template(name="activeCampaignListItem")
+	+with(project)
+		li.list-group-item
+			.row
+				.col-6
+					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+				.col-6.text-right
+					if bools.isFeatured
+						+unfeatureProjectButton
+					else
+						+featureProjectButton
+					|&nbsp;
+					+rejectProjectButton
+
+template(name="rejectedCampaignListItem")
+	+with(project)
+		li.list-group-item
+			.row
+				.col-6
+					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+				.col-6.text-right
+					+approveProjectButton
+
+template(name="approveProjectButton")
+	a.btn.btn-sm.btn-primary.approveProject(href="#" role="button") Approve
+
+template(name="rejectProjectButton")
+	a.btn.btn-sm.btn-danger.rejectProject(href="#" role="button") Reject
+
+template(name="featureProjectButton")
+	a.btn.btn-sm.btn-primary.featureProject(href="#" role="button") Feature
+
+template(name="unfeatureProjectButton")
+	a.btn.btn-sm.btn-secondary.unfeatureProject(href="#" role="button") Un-Feature

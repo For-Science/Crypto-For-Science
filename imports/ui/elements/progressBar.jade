@@ -1,0 +1,7 @@
+template(name="progressBar")
+	div.progress.progressBarContainer
+		div.progress-bar(role="progressbar" style="width: {{getPercent project.raised.totalRaised project.goals.projectGoal}}%" aria-valuenow="#{project.raised.totalRaised}" aria-valuemin="0" aria-valuemax="#{project.goals.projectGoal}")
+	p 
+		b ${{centiToDeci project.raised.totalRaised}} 
+		| / ${{centiToDeci project.goals.projectGoal}} goal 
+	

@@ -1,0 +1,9 @@
+template(name="projectsIndex")
+	div.container
+		div.row
+			div.col-sm-12
+				h1 Projects
+		div.row
+			each project in projects
+				div.col-sm-4
+					+projectCard(project=project)

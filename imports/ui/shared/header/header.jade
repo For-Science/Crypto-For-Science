@@ -1,0 +1,23 @@
+template(name="header")
+	nav.Header.navbar.navbar-expand-lg.navbar-dark.bg-primary.mb-4
+		div.container
+			a.navbar-brand(href="{{pathFor 'frontpage'}}") Crypto for Science
+			button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+				span.navbar-toggler-icon
+			div.collapse.navbar-collapse#navbarSupportedContent
+				ul.navbar-nav.mr-auto
+					li.nav-item(class="{{isActiveRoute 'frontpage'}}")
+						a.nav-link(href="{{pathFor 'frontpage'}}") Home
+							span.sr-only \(current)
+					li.nav-item(class="{{isActiveRoute 'projectsIndex'}}")
+						a.nav-link(href="{{pathFor 'projectsIndex'}}") Projects
+				ul.navbar-nav.right-pad-nav
+					+loginButtons
+					if currentUser	
+						li.nav-item(class="{{isActiveRoute 'about'}}")
+							a.nav-link(href="{{pathFor 'settings_myProjects'}}")
+								i.fas.fa-sliders
+									//- i.fa.fa-circle.notification
+					li.nav-item &nbsp;
+					li.nav-item(class="{{isActiveRoute 'about'}}")
+						a.nav-link(href="{{pathFor 'about'}}") About
