@@ -42,8 +42,8 @@ Template.projectDonationClaimsAdmin.events({
 })
 
 Template.donationListItem.events({
-	"click .approveDonation" : (e,t) =>{
-		let donation = Blaze.getData(e.currentTarget);
+	"click .approveDonation" : (event, templateInstance) =>{
+		let donation = Blaze.getData(event.currentTarget);
 		// console.log(donation);
 		approveDonation.call(
 			donation,
@@ -56,8 +56,8 @@ Template.donationListItem.events({
 		);
 
 	},
-	"click .rejectDonation" : (e,t) =>{
-		let donation = Blaze.getData(e.currentTarget);
+	"click .rejectDonation" : (event, templateInstance) =>{
+		let donation = Blaze.getData(event.currentTarget);
 		// console.log(donation);
 		rejectDonation.call(
 			donation,

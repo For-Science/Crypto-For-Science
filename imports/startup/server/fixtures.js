@@ -83,7 +83,7 @@ Meteor.startup(() => {
 	if (Meteor.users.find().count() === 0) { 	// seed 'administrator' role user
 																						// so that new admins can be added via database
 																						// you're going to want to not have this in production
-		seedUserId = Accounts.createUser({
+		const seedUserId = Accounts.createUser({
 			email: 'app_admin@cryptoforscience.com',
 			password: 'app_admin-password'
 		});

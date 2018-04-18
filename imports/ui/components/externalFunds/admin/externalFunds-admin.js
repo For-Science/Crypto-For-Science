@@ -42,8 +42,8 @@ Template.projectExternalFundsAdmin.events({
 })
 
 Template.externalFundListItem.events({
-	"click .removeFunding": (e, t) => {
-		let externalFundItem = Blaze.getData(e.currentTarget);
+	"click .removeFunding": (event, templateInstance) => {
+		let externalFundItem = Blaze.getData(event.currentTarget);
 		// console.log(donationClaim);
 		removeExternalFunding.call(
 			externalFundItem,
