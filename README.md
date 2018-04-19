@@ -2,7 +2,7 @@
 
 Crypto For Science is a crowdfunding platform that uses the spirit of cryptocurrency in order to fund scientific research: no fees and no intermediaries - all the funds go directly to the researchers.
 
-The code from this repository will be online at: [https://cryptoforscience.com](https://cryptoforscience.com)
+The code from this repository will be online at: [https://www.cryptoforscience.com](https://www.cryptoforscience.com)
 
 ## Usage
 1. `git clone https://github.com/For-Science/Crypto-For-Science.git ./cryptoforscience`
@@ -27,6 +27,8 @@ A big advantage is that I have a marketing company, and I’ll promote the campa
 - I won’t be policing the platform (for example, by checking that recycling of funds has been done accordingly). The only approval process will be when a researcher applies to have an account created, and then at his first campaign. All his ulterior campaigns will just be posted directly, without going through approval. (note that this is how we do it in the MVP, but final version will have [a much better system](https://trello.com/c/oWhIqOTx/7-this-is-the-coolest-idea-ever-in-the-final-version-add-two-new-types-of-members-project-approver-and-identity-checker))
 - I won’t hold any funds as an intermediary or an escrow, I won’t ask for any help for covering costs like website development and hosting.
 - etc.
+
+Our Slack, which has channels for developers, pentesters, marketers, representatives, etc.: [ForSEH](https://join.slack.com/t/forseh/shared_invite/enQtMzQ5MzI1Mjc2NTMwLWZkMzRmNmM5NzRhNzM0OWE2MzlmNTZlMWJjYzViNmU0NjFmMjM3MTAyYzJiOWQ0NTVhMWZjMGNiYmJiMWI0NDg)
 
 Our public Trello board: [https://trello.com/b/QDlYTHye/cryptoforsciencecom](https://trello.com/b/QDlYTHye/cryptoforsciencecom), which should be updated with features that we're working on.
 
