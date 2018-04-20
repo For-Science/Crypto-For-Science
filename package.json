@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
     "postinstall": "cp -R node_modules/font-awesome/fonts ./public/"
   },
   "dependencies": {
@@ -16,5 +17,9 @@
     "noty": "^3.1.4",
     "popper.js": "^1.12.9",
     "simpl-schema": "^0.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-meteor": "^4.2.0"
   }
 }

@@ -70,15 +70,15 @@ export const rejectDonationClaim = new ValidatedMethod({
 		// Additional data verification
 
 		// validate that they have the permissions needed to approve this donation claim
-		const donationClaimRead = DonationClaims.findOne(donation._id);
+		// const donationClaimRead = DonationClaims.findOne(donation._id);
 
-		if (!permissions.canEditProject(donationClaims.projectId)) {
+		if (!permissions.canEditProject(donationClaim.projectId)) {
 			throw new Meteor.Error('projects.create',
 				"Does not have necessary permissions to edit project");
 		}
 
 		DonationClaims.update(
-			{ _id: donationClaims._id, projectId: donationClaims.projectId },
+			{ _id: donationClaim._id, projectId: donationClaim.projectId },
 			{
 				$set: {
 					reviewed: true,
