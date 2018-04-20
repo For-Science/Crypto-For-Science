@@ -95,8 +95,34 @@ Template.registerHelper( "daysRemaining", (endDate) => {
 	var today = new Date();
 
 	today.setHours(0, 0, 0)
-	endDate.setHours(0, 0, 0);
+	endDate.setHours(0, 0, 0); // projects end at midnight in this time zone
 
-	var diffDays = Math.round(Math.abs((endDate.getTime() - today.getTime())/(oneDay)));
-	return helpers.pluralize(diffDays, "day")
+	endTime = endDate.getTime();
+	todayTime = today.getTime();
+
+	if(todayTime > endTime){
+		return "This campaign has ended"
+	}
+	else{ // TODO: improvement needed: if there is left than one day left, count down the HMS
+		var diffDays = Math.round(Math.abs((endTime - todayTime)/(oneDay)));
+		return helpers.pluralize(diffDays, "day") + " left"
+	}
+})
+
+Template.registerHelper( "hasTimeRemaining", (endDate) => {
+	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+	var today = new Date();
+
+	today.setHours(0, 0, 0)
+	endDate.setHours(0, 0, 0); // projects end at midnight in this time zone
+
+	endTime = endDate.getTime();
+	todayTime = today.getTime();
+
+	if(todayTime > endTime){
+		return false
+	}
+	else{
+		return true
+	}
 })

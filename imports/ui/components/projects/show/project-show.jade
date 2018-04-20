@@ -19,7 +19,6 @@ template(name="projectShow")
 								div.col-sm-12
 									p.text-right 
 										strong {{daysRemaining project.timePeriods.endDate}}
-										| left
 									h1.display-4 #{project.title}
 							div.row
 								div.col-sm-6
@@ -27,7 +26,9 @@ template(name="projectShow")
 								div.col-sm-6
 									
 									+progressBar(project=project)
-									a.btn.btn-primary(href="#paymentInfo") Support this project
+									p.text-muted Soft Goal : ${{centiToDeci project.goals.softGoal}} 
+									if hasTimeRemaining project.timePeriods.endDate
+										a.btn.btn-primary(href="#paymentInfo") Support this project
 				div.row
 					div.col-sm-12
 						h4 Why is this useful?
@@ -56,25 +57,26 @@ template(name="projectShow")
 									td Email:
 									td #{project.contact.email}
 					div.col-sm-6#paymentInfo
-						h4 How to Support
-						p.mark
-							table
-								tr
-									td Send Bitcoin: &nbsp;
-									td #{project.cryptoAddresses.BTC}
-								tr
-									td Send Ether: &nbsp;
-									td #{project.cryptoAddresses.ETH}
-								if project.acceptsFiat
+						if hasTimeRemaining project.timePeriods.endDate
+							h4 How to Support
+							p.mark
+								table
 									tr
-										td Wire Transfer: &nbsp;
-										td [how to donate to bank account]
-								//- tr
-									td Activate your Network: &nbsp;
-									td
-										| [fb]
-										| [tw]
-										//- | [hn?]
+										td Send Bitcoin: &nbsp;
+										td #{project.cryptoAddresses.BTC}
+									tr
+										td Send Ether: &nbsp;
+										td #{project.cryptoAddresses.ETH}
+									if project.acceptsFiat
+										tr
+											td Wire Transfer: &nbsp;
+											td [how to donate to bank account]
+									//- tr
+										td Activate your Network: &nbsp;
+										td
+											| [fb]
+											| [tw]
+											//- | [hn?]
 						//- unless canEditProject project._id
 							p.text-right
 								a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectDonationClaimNew' projectId=project._id}}") Claim a donation
