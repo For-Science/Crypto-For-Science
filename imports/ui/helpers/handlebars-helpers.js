@@ -98,5 +98,5 @@ Template.registerHelper( "daysRemaining", (endDate) => {
 	endDate.setHours(0, 0, 0);
 
 	var diffDays = Math.round(Math.abs((endDate.getTime() - today.getTime())/(oneDay)));
-	return diffDays
+	return helpers.pluralize(diffDays, "day")
 })
