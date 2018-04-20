@@ -42,7 +42,7 @@ export const approveDonation = new ValidatedMethod({
 
 		// validate that they have the permissions needed to approve this donation claim
 		if (!permissions.canEditProject(donation.projectId)) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('donation.approve',
         "Does not have necessary permissions to edit project");
 		}
 
@@ -73,7 +73,7 @@ export const rejectDonation = new ValidatedMethod({
 		const donationRead = Donations.findOne(donation._id);
 
 		if (!permissions.canEditProject(donation.projectId)) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('donation.reject',
         "Does not have necessary permissions to edit project");
 		}
 

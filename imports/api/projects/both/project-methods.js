@@ -76,11 +76,11 @@ export const updateProject = new ValidatedMethod({
 		// this meteor user needs to be able to edit this project
 		if (!this.userId) {
       // Throw errors with a specific error code
-      throw new Meteor.Error('projects.create',
+      throw new Meteor.Error('projects.update',
         'Must be logged in to edit a project.');
     }
 		if (!permissions.canEditProject(project._id)) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('projects.update',
         "Does not have necessary permissions to edit project");
 		}
 
@@ -125,7 +125,7 @@ export const approveProject = new ValidatedMethod({
 
 		// validate that they have the permissions needed to approve this project
 		if (!permissions.canApproveRejectProjects()) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('project.approve',
         "Does not have necessary permissions to edit project");
 		}
 
@@ -161,7 +161,7 @@ export const rejectProject = new ValidatedMethod({
 
 		// validate that they have the permissions needed to reject this project
 		if (!permissions.canApproveRejectProjects()) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('project.reject',
         "Does not have necessary permissions to edit project");
 		}
 
@@ -191,7 +191,7 @@ export const featureProject = new ValidatedMethod({
 
 		// validate that they have the permissions needed to reject this project
 		if (!permissions.canApproveRejectProjects()) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('project.feature',
         "Does not have necessary permissions to edit project");
 		}
 
@@ -221,7 +221,7 @@ export const unfeatureProject = new ValidatedMethod({
 
 		// validate that they have the permissions needed to reject this project
 		if (!permissions.canApproveRejectProjects()) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('project.unfeature',
         "Does not have necessary permissions to edit project");
 		}
 

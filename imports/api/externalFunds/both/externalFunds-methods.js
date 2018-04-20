@@ -21,7 +21,7 @@ export const addExternalFunding = new ValidatedMethod({
 		// some validation here to make sure user is adding funding into a
 		// project that he manages
 		if (!permissions.canEditProject(externalFund.projectId)) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('externalFunds.create',
         "Does not have necessary permissions to edit project");
 		}
 
@@ -49,7 +49,7 @@ export const removeExternalFunding = new ValidatedMethod({
 		// some validation here to make sure user is removing funding from a
 		// project that he manages
 		if (!permissions.canEditProject(externalFund.projectId)) {
-			throw new Meteor.Error('projects.create',
+			throw new Meteor.Error('externalFunds.remove',
         "Does not have necessary permissions to edit project");
 		}
 
