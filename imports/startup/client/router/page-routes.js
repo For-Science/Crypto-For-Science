@@ -1,10 +1,11 @@
-import { FlowRouter } from "meteor/kadira:flow-router"
-import { BlazeLayout } from "meteor/kadira:blaze-layout"
+import { FlowRouter } from "meteor/kadira:flow-router";
+import { BlazeLayout } from "meteor/kadira:blaze-layout";
 
-import "/imports/ui/pages/frontpage/frontpage.js"
-import "/imports/ui/pages/about/about.js"
-import "/imports/ui/pages/settings/settings.js"
-import "/imports/ui/pages/login/login.js"
+import "/imports/ui/pages/frontpage/frontpage.js";
+import "/imports/ui/pages/about/about.js";
+import "/imports/ui/pages/contributors/contributors.js";
+import "/imports/ui/pages/settings/settings.js";
+import "/imports/ui/pages/login/login.js";
 
 // ***************************************************************
 // Static pages
@@ -13,28 +14,41 @@ import "/imports/ui/pages/login/login.js"
 // FRONTPAGE
 // -------------------------------------------------------
 FlowRouter.route("/", {
-  action: function() {
-    BlazeLayout.render("layout", {
-      header: "header",
-      main: "frontpage",
-      footer: "footer"
-    })
-  },
-  name: "frontpage"
-})
+	action: function() {
+		BlazeLayout.render("layout", {
+			header: "header",
+			main: "frontpage",
+			footer: "footer"
+		});
+	},
+	name: "frontpage"
+});
 
 // ABOUT
 // -------------------------------------------------------
 FlowRouter.route("/about", {
-  action: function() {
-    BlazeLayout.render("layout", {
-      header: "header",
-      main: "about",
-      footer: "footer"
-    })
-  },
-  name: "about"
-})
+	action: function() {
+		BlazeLayout.render("layout", {
+			header: "header",
+			main: "about",
+			footer: "footer"
+		});
+	},
+	name: "about"
+});
+
+// CONTRIBUTORS
+// -------------------------------------------------------
+FlowRouter.route("/contributors", {
+	action: function() {
+		BlazeLayout.render("layout", {
+			header: "header",
+			main: "contributors",
+			footer: "footer"
+		});
+	},
+	name: "contributors"
+});
 
 // // LOGIN
 // // -------------------------------------------------------
