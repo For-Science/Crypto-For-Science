@@ -86,6 +86,23 @@ Template.registerHelper('isActiveRoute_Tab', function(routeName) {
 	}
 });
 
+Template.registerHelper('isActiveRoute_SettingsRoute', function() { //routeNames needs to be an array
+	console.log("isSettingsRoute called");
+
+	let settingsRoutes = ['settings_myProjects','settings_myDonationClaims','settings_admin']
+
+	let isActive = "";
+	settingsRoutes.forEach( (val, key) => {
+		console.log("routeName:");
+		console.log(val);
+		if (FlowRouter.getRouteName() == val) {
+			isActive = "active"
+		}
+	});
+
+	return isActive;
+});
+
 Template.registerHelper( "daysRemaining", (endDate) => {
 	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
 	var today = new Date();
