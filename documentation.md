@@ -121,7 +121,7 @@ project.bools.isFeatured = TRUE
 
 ### currency units
 
-All currency is tracked and ultimately translated to USD for use in the progress bar. When storing USD, units are stored in cents, so that they can be stored as ints instead of floats. We do this because floats do not behave precisely in javascript and can lead to serious math errors when using decimals. We can avoid this entire class of errors using ints.
+All currency is tracked and ultimately translated to USD for use in the progress bar. When storing USD, units are stored in cents, so that they can be stored as ints instead of floats. We do this because floats do not behave precisely and can lead to serious math errors when precise decimal math is a requirement. We can avoid this entire class of errors/bugs using ints.
 
 Goals, soft goals, and total raised are all in USD, as ints.
 
