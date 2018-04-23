@@ -75,10 +75,6 @@ Template.registerHelper( "isAdmin", () => {
 	return permissions.isAdmin(Meteor.userId())
 })
 
-Template.registerHelper( "canManageAllProjects", () => {
-	return permissions.canManageAllProjects(Meteor.userId())
-})
-
 Template.registerHelper('isActiveRoute_Tab', function(routeName) {
 	if (FlowRouter.getRouteName() == routeName) {
 		// console.log(routeName + ' > Active');
