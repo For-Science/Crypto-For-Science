@@ -109,10 +109,11 @@ template(name="activeCampaignListItem")
 				.col-6
 					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
 				.col-6.text-right
-					if bools.isFeatured
-						+unfeatureProjectButton
-					else
-						+featureProjectButton
+					if canFeatureProjects
+						if bools.isFeatured
+							+unfeatureProjectButton
+						else
+							+featureProjectButton
 					|&nbsp;
 					+rejectProjectButton
 

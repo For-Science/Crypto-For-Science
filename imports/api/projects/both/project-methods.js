@@ -189,8 +189,8 @@ export const featureProject = new ValidatedMethod({
   run(project) {
     // Additional data verification
 
-		// validate that they have the permissions needed to reject this project
-		if (!permissions.canApproveRejectProjects()) {
+		// validate that they have the permissions needed to feature this project
+		if (!permissions.canFeatureProjects()) {
 			throw new Meteor.Error('project.feature',
         "Does not have necessary permissions to edit project");
 		}
@@ -219,8 +219,8 @@ export const unfeatureProject = new ValidatedMethod({
   run(project) {
     // Additional data verification
 
-		// validate that they have the permissions needed to reject this project
-		if (!permissions.canApproveRejectProjects()) {
+		// validate that they have the permissions needed to unfeature this project
+		if (!permissions.canFeatureProjects()) {
 			throw new Meteor.Error('project.unfeature',
         "Does not have necessary permissions to edit project");
 		}

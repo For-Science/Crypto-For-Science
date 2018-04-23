@@ -4,6 +4,7 @@ import { Projects } from "/imports/api/projects/both/project-collection.js"
 
 // import { approveProject, rejectProject} from "/imports/api/projects/both/project-methods.js"
 import * as projectMethods from "/imports/api/projects/both/project-methods.js"
+import * as permissions from "/imports/modules/permissions.js"
 
 import "./settings.jade"
 
@@ -105,3 +106,9 @@ Template.unfeatureProjectButton.events({
 	}
 })
 
+
+Template.activeCampaignListItem.helpers ({
+	canFeatureProjects() {
+		return permissions.canFeatureProjects()
+	}
+})
