@@ -256,11 +256,8 @@ Anyone can submit a `donation claim` for a project. Their claim is stored in the
 We use the `alanning:roles` package to manage roles. All roles are Group roles. Currently the groups that are not the global group are ProjectID's.
 
 - **Administrator**
-
   - role = "administrator".
-
   - In Global group.
-
   - Given to a user by CFS. Currently, to make someone an administrator, you have to edit their user document in the database and add the following:
 
     ```json
@@ -272,26 +269,18 @@ We use the `alanning:roles` package to manage roles. All roles are Group roles. 
     ```
 
   - When a user has this role, anything they try to do should pass any permissions check. Can:
-
     - Do anything that doesn't violate the privacy policy.
-
 - **Researcher**
-
   - role = "researcher".
   - In {ProjectID} group. A user is assigned this role for a particular project ID.
   - Given to a user by the app when they submit a project proposal.
   - When a user has this role, they can manage the project that they have this role for, excluding any staff-exclusive actions, such as approving a project. Can:
     - Edit project descriptions and q&a answers for the project that they have this role for
     - Cancel  / End the project (not implemented)
-
 - **Project Approver**
-
   - Not yet implemented. Below is how it should work:
-
   - role = "approver".
-
   - In Global group.
-
   - Given to a user by CFS. To make someone an approver, you have to edit their user document in the database and add the following:
 
     ```  json
@@ -303,17 +292,11 @@ We use the `alanning:roles` package to manage roles. All roles are Group roles. 
     ```
 
   - When a user has this role, they can approve projects. Can:
-
     - see / do everything needed to approve/reject pending projects.
-
 - **Identity Checker**
-
   - Not yet implemented. Below is how it should work:
-
   - role = "checker".
-
   - In Global group.
-
   - Given to a user by CFS. To make someone a checker, you have to edit their user document in the database and add the following:
 
     ```json
@@ -325,11 +308,8 @@ We use the `alanning:roles` package to manage roles. All roles are Group roles. 
     ```
 
   - When a user has this role, they can check the identity of users who have submitted a project proposal. Can:
-
     - See / do everything needed to check the identity of a pending project, but not approve projects.
-
 - **Donator**
-
   - Currently you don't need to be logged in to submit a donation claim, so it's not yet "turned on", although it is wired up. The following is how it would work for a user role when turned on.
   - role = "donator"
   - In {ProjectID} group. A user is assigned this role for a particular project ID.
