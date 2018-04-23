@@ -114,6 +114,9 @@ template(name="activeCampaignListItem")
 							+unfeatureProjectButton
 						else
 							+featureProjectButton
+					else
+						if bools.isFeatured
+							Featured
 					|&nbsp;
 					+rejectProjectButton
 

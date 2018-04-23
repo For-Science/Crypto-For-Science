@@ -7,35 +7,35 @@ import { Roles } from "meteor/alanning:roles"
 
 // Checks whether selected user or current user can edit the project
 export const canEditProject = (project_id) => {
-	let userId = Meteor.userId();
+	let user = Meteor.userId();
   // return userId === item.userId
 	// return userId === item.owner
-	return Roles.userIsInRole(userId, ['researcher','administrator'], project_id)
+	return Roles.userIsInRole(user, ['researcher','administrator'], project_id)
 }
 
 export const canSubmitDonationClaim = ( project_id) => {
 	// must be [ logged in ] and also [ not in an researcher role for this project ]
-	let userId = Meteor.userId();
-	return Meteor.user() && !Roles.userIsInRole(userId, 'researcher', project_id)
+	let user = Meteor.userId();
+	return user && !Roles.userIsInRole(user, 'researcher', project_id)
 }
 
 // Checks whether selected user or current user is admin (with the Roles package)
 export const isAdmin = () => {
-	let userId = Meteor.userId();
-  Roles.userIsInRole(userId, ["administrator"])
+	let user = Meteor.userId();
+	return Roles.userIsInRole(user, ["administrator"])
 }
 
 export const canViewAnyProject = () => {
-	let userId = Meteor.userId();
-  Roles.userIsInRole(userId, ["administrator","approver","checker"])
+	let user = Meteor.userId();
+  return Roles.userIsInRole(user, ["administrator","approver","checker"])
 }
 
 export const canApproveRejectProjects = () => {
-  let userId = Meteor.userId();
-  Roles.userIsInRole(userId, ["administrator","approver"]) // add other roles to array as they become implemented
+  let user = Meteor.userId();
+  return Roles.userIsInRole(user, ["administrator","approver"]) // add other roles to array as they become implemented
 }
 
 export const canFeatureProjects = () => {
-  let userId = Meteor.userId();
-  Roles.userIsInRole(userId, ["administrator"])
+  let user = Meteor.userId();
+  return Roles.userIsInRole(user, ["administrator"])
 }
