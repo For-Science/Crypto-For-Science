@@ -103,6 +103,7 @@ Approved projects show up on the "projects" listing page, and their project URLs
 You can approve a project via the admin UI with an `administrator` or `approver` role account. It implements the following update for the project in the database:
 
 ```
+project.bools.reviewed = TRUE
 project.bools.approved = TRUE
 ```
 
@@ -113,8 +114,8 @@ Featured projects show up on the home page.
 You can feature an approved project by pressing the `feature` button via the admin UI, with an `administrator` role account. It implements the following update for the project in the database:
 
 ```
-project.bools.approved = TRUE
 project.bools.reviewed = TRUE
+project.bools.approved = TRUE
 project.bools.isFeatured = TRUE
 ```
 
@@ -181,19 +182,47 @@ These are the project states shown in the UI
   - pending review. It's not published.
   - this is the default state for a new project.
   - current implementation:
-    - { project.bools.reviewed:false }
+
+    ``` json
+    {
+      "project.bools.reviewed":false
+    }
+    ```
+
 - **approved**
   - it's published.
   - current implementation:
-    - { project.bools.reviewed:true, project.bools.approved:true }
+
+    ``` json
+    {
+      "project.bools.reviewed":true,
+      "project.bools.approved":true
+    }
+    ```
+
 - **featured**
   - it's published, and on the front page.
   - current implementation:
-    - { project.bools.reviewed:true, project.bools.approved:true, project.bools.isFeatured:true }
+
+    ``` json
+    {
+      "project.bools.reviewed":true,
+      "project.bools.approved":true,
+      "project.bools.isFeatured":true
+    }
+    ```
+
 - **denied**
   - It's not published, and won't be.
   - current implementation:
-    - { project.bools.reviewed:true, project.bools.approved:false }
+
+    ``` json
+    {
+      "project.bools.reviewed":true,
+      "project.bools.approved":false
+    }
+    ```
+
 - **campaign ended**
   - not currently implemented
   - When the campaign's time period has lapsed. Or when the project owner has ended the campaign.
