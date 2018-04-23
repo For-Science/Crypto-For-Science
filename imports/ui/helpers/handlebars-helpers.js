@@ -86,20 +86,14 @@ Template.registerHelper('isActiveRoute_Tab', function(routeName) {
 	}
 });
 
-Template.registerHelper('isActiveRoute_SettingsRoute', function() { //routeNames needs to be an array
-	console.log("isSettingsRoute called");
-
-	let settingsRoutes = ['settings_myProjects','settings_myDonationClaims','settings_admin']
-
+Template.registerHelper('isActiveRoute_Multi', function(multiString) { // regexp for 'multi|string|locations'
+	let routesArr = multiString.split("|")
 	let isActive = "";
-	settingsRoutes.forEach( (val, key) => {
-		console.log("routeName:");
-		console.log(val);
+	routesArr.forEach( (val, key) => {
 		if (FlowRouter.getRouteName() == val) {
-			isActive = "active"
+			isActive = "active";
 		}
 	});
-
 	return isActive;
 });
 
