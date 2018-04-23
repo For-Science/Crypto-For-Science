@@ -68,11 +68,11 @@ Template.registerHelper("canEditProject", (project_id) => {
 })
 
 Template.registerHelper( "canSubmitDonationClaim", (project_id) => {
-	return permissions.canSubmitDonationClaim(Meteor.userId(), project_id)
+	return permissions.canSubmitDonationClaim(project_id)
 })
 
 Template.registerHelper( "isAdmin", () => {
-	return permissions.isAdmin(Meteor.userId())
+	return permissions.isAdmin()
 })
 
 Template.registerHelper('isActiveRoute_Tab', function(routeName) {
