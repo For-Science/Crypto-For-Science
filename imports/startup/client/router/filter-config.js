@@ -1,7 +1,7 @@
-import { FlowRouter } from "meteor/kadira:flow-router"
-import { Meteor } from "meteor/meteor"
+import { FlowRouter } from "meteor/kadira:flow-router";
+import { Meteor } from "meteor/meteor";
 
-import { notify } from "/imports/modules/notifier"
+import { notify } from "/imports/modules/notifier";
 
 // ***************************************************************
 // Route filters & triggers
@@ -13,34 +13,31 @@ const mustBeLoggedIn = (context, redirect, stop) => {
 		var route = FlowRouter.current();
 		// console.log("FlowRouter.current():");
 		// console.log(route);
-		if (route.oldRoute && (route.oldRoute.name != route.route.getRouteName())) {
+		if (route.oldRoute && route.oldRoute.name != route.route.getRouteName()) {
 			// console.log("going back via window history"); // because flowRouter.oldRoute doesn't include any param data
 			window.history.back();
 		} else {
 			// console.log("going to front page");
-			redirect("frontpage")
+			redirect("frontpage");
 		}
-		notify("Please log in or sign up first.", "error")
+		notify("Please log in or sign up first.", "error");
 	}
-}
+};
 
 /*
 Uncomment to require the user to be logged in to visit these routes
 Note: This is only handled client-side. Remember to do verification on the server as well
 */
 
-FlowRouter.triggers.enter(
-	[mustBeLoggedIn], {
-		except: [
-			'frontpage'
-			, 'projectsIndex'
-			, 'projectShow'
-			, 'login'
-			, 'projectDonationClaimNew'
-			, 'about'
-		]
-	}
-)
+FlowRouter.triggers.enter([mustBeLoggedIn], {
+	except: [
+		"frontpage",
+		"projectsIndex",
+		"projectShow",
+		"login",
+		"projectDonationClaimNew",
+		"about",
+		"contributors"
+	]
+});
 // FlowRouter.triggers.enter([mustBeLoggedIn], { only: ['projectNew'] })
-
-
