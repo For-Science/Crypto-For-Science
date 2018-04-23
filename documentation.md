@@ -1,44 +1,25 @@
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Crypto for Science documentation](#crypto-for-science-documentation)
-
 - [projects](#projects)
-
-		- [creating projects](#creating-projects)
-
-		- [sample project object](#sample-project-object)
-
-		- [editing projects](#editing-projects)
-
-		- [approving projects](#approving-projects)
-
-		- [featuring projects](#featuring-projects)
-
-		- [currency units](#currency-units)
-
-		- [external funds](#external-funds)
-
-		- [sample external fund document](#sample-external-fund-document)
-
-		- [Countdown](#countdown)
-
-		- [Campaign totals](#campaign-totals)
-
-		- [contributors list](#contributors-list)
-
-		- [project states](#project-states)
-
+    - [creating projects](#creating-projects)
+    - [sample project object](#sample-project-object)
+    - [editing projects](#editing-projects)
+    - [approving projects](#approving-projects)
+    - [featuring projects](#featuring-projects)
+    - [currency units](#currency-units)
+    - [external funds](#external-funds)
+    - [sample external fund document](#sample-external-fund-document)
+    - [Countdown](#countdown)
+    - [Campaign totals](#campaign-totals)
+    - [contributors list](#contributors-list)
+    - [project states](#project-states)
 - [donation claims](#donation-claims)
-
-		- [sample donation claim object:](#sample-donation-claim-object)
-
+    - [sample donation claim object:](#sample-donation-claim-object)
 - [roles](#roles)
-
 - [permissions](#permissions)
-
-		- [how permissions work](#how-permissions-work)
-
-		- [current permissions](#current-permissions)
+    - [how permissions work](#how-permissions-work)
+    - [current permissions](#current-permissions)
 
 <!-- /TOC -->
 
