@@ -224,7 +224,7 @@ These are the project states shown in the UI
     ```
 
 - **campaign ended**
-  - The UI which will say that the campaign has ended based on the endDate, and hide any payment addresses. But there isn't any database change for this yet.
+  - The UI will say that the campaign has ended based on the endDate, and hide any payment addresses. But there isn't any database change for this yet.
   - When the campaign's time period has lapsed. Or when the project owner has ended the campaign.
 
 # donation claims
