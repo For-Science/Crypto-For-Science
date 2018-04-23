@@ -4,6 +4,8 @@ Crypto For Science is a crowdfunding platform that uses the spirit of cryptocurr
 
 The code from this repository will be online at: [https://www.cryptoforscience.com](https://www.cryptoforscience.com)
 
+View documentation at [https://github.com/For-Science/Crypto-For-Science/blob/master/documentation.md](https://github.com/For-Science/Crypto-For-Science/blob/master/documentation.md)
+
 ## Usage
 1. `git clone https://github.com/For-Science/Crypto-For-Science.git ./cryptoforscience`
 2. `cd cryptoforscience`
