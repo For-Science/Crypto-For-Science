@@ -26,7 +26,7 @@
 
 # Crypto for Science documentation
 
-This page takes a bird's eye view of the internals of the CFS app, focusing on the main components. It does not exist to explain the source code, but to explain desired functionality, the 'why' behind the functionality, and how the functionality is implemented. Use this to know which features are implemented, which ones aren't yet, and how they all fit together.
+This page takes a bird's eye view of the internals of the CFS app, focusing on the main components. It exists to explain desired functionality, the 'why' behind the functionality, and how the functionality is implemented. It is not intended to be a line-by-line analysis of the source code. Use this to know which features are implemented, how future features are planned to be implemented, which database collections store which data, and how things fit together.
 
 # projects
 
