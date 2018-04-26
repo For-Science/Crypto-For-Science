@@ -9,15 +9,16 @@ template(name="settings")
 					a.nav-link(class="{{isActiveRoute 'settings_myProjects'}}" href="{{pathFor 'settings_myProjects'}}") My Campaigns
 				//- li.nav-item
 					a.nav-link(class="{{isActiveRoute 'settings_myDonations'}}" href="{{pathFor 'settings_myDonations'}}") My Donations
-				//- li.nav-item
-				//- 	a.nav-link.disabled(href='#dolor', data-toggle='tab', role='tab', aria-controls='dolor') Dolor
 				if isAdmin
 					li.nav-item
 						a.nav-link(class="{{isActiveRoute 'settings_admin'}}" href="{{pathFor 'settings_admin'}}") CFS Admin
+					li.nav-item
+						a.nav-link(class="{{isActiveRoute 'settings_seo'}}" href="{{pathFor 'settings_seo'}}") CFS Meta
 			.tab-content.w-100
 				+settings_myProjects
 				+settings_myDonations
 				+settings_admin
+				+settings_Meta
 
 template(name="settings_myProjects")
 	#myProjects.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_myProjects'}}")
@@ -43,7 +44,9 @@ template(name="settings_myProjects")
 							.col-8.text-right
 								if project.bools.approved
 									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit info
+									| 
 									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectExternalFundsAdmin' projectId=project._id}}" role="button") Add external funding
+									| 
 									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectDonationClaimsAdmin' projectId=project._id}}" role="button") Manage donation claims
 									//- a.btn.btn-sm.btn-secondary(href="#" role="button") End Campaign
 			else
@@ -89,7 +92,6 @@ template(name="settings_admin")
 		else
 			.alert.alert-primary(role="alert")
 				|There are no rejected campaigns.
-
 
 template(name="pendingCampaignListItem")
 	+with(project)

@@ -1,0 +1,13 @@
+template(name="settings_Meta")
+	#admin.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_seo'}}")
+		+autoForm schema=updateSiteMetaSchema doc=siteMeta id="siteMetaEditForm" type="method" meteormethod="siteMeta.update" 
+
+			h2 Meta data
+			h5 Facebook Open Graph 
+			ul.list-group
+				li.list-group-item
+					.row
+						.col-sm-12
+								+afQuickField name='_id' readonly=true type='hidden'
+								+afQuickField name='crawlers.facebookOpenGraph.description' rows=3
+			button.btn.btn-primary(type="submit") Update

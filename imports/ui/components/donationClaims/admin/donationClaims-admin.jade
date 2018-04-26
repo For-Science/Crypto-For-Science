@@ -25,19 +25,18 @@ template(name="donationClaimListItem")
 						tr
 							td
 								p claim &nbsp;&nbsp;
-									span.badge.badge-light private 
-									//- |(private )
+									span.badge.badge-light (private)
 							td
 								p
-									|&nbsp;&nbsp;#{content}
+									| : &nbsp;&nbsp;#{content}
 						tr
 							td
 								p display text &nbsp;&nbsp;
-									span.badge.badge-light public 
-									//- |(public)
+									span.badge.badge-light (public )
+									
 							td
 								p
-									|&nbsp;&nbsp;#{title}
+									| : &nbsp;&nbsp;#{title}
 				.col-6.text-right
 					if reviewed
 						if approved

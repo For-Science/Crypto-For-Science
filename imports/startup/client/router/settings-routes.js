@@ -1,8 +1,9 @@
-import { FlowRouter } from "meteor/kadira:flow-router"
-import { BlazeLayout } from "meteor/kadira:blaze-layout"
+import { FlowRouter } from "meteor/kadira:flow-router";
+import { BlazeLayout } from "meteor/kadira:blaze-layout";
 
 // import "/imports/ui/components/settings/settings_myProjects/settings_myProjects.js"
-import "/imports/ui/pages/settings/settings.js"
+import "/imports/ui/pages/settings/settings.js";
+import "/imports/ui/pages/settings/settings_Meta/settings_Meta.js";
 
 // ***************************************************************
 // Settings routes
@@ -43,4 +44,16 @@ FlowRouter.route("/settings/admin", {
     })
   },
   name: "settings_admin"
+})
+
+// meta info for crawlers
+FlowRouter.route("/settings/meta", {
+  action: function () {
+    BlazeLayout.render("layout", {
+      header: "header",
+      main: "settings",
+      footer: "footer"
+    })
+  },
+  name: "settings_seo"
 })

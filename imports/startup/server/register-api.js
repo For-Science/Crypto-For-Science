@@ -15,3 +15,7 @@ import "/imports/api/donationClaims/server/donation-claim-publications.js"
 // EXTERNAL FUNDS
 import "/imports/api/externalFunds/both/externalFunds-methods.js"
 import "/imports/api/externalFunds/server/externalFunds-publications.js"
+
+// SITE META
+import "/imports/api/siteMeta/both/siteMeta-methods.js"
+import "/imports/api/siteMeta/server/siteMeta-publications.js"

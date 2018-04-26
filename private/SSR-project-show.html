@@ -1,10 +1,10 @@
 <!-- this file handles crawler tags for the /projects/:projectID route.
 it is called by server/serverroutes.js when the /projects/:projectID route is hit by a crawler. -->
 
-<!-- it basically means that server/serverroutes.js has been given the app special instructions
+<!-- it basically means that server/serverroutes.js has given the app special instructions
 to check for the presence of crawlers when the /projects/:projectID route is hit.
 and if a crawler is detected, it renders on the server the content (below) and returns it.
-note that this is not the entire page copy, since the crawlers are looking for specific tags only. -->
+note that this is not the entire page copy, since the crawlers are looking for specific meta data only. -->
 
 <!-- test it by doing a curl "http://localhost:3000/projects/{valid project ID}" -H 'user-agent: facebookexternalhit/1.1'
 where {valid project ID} is a valid project id. -->

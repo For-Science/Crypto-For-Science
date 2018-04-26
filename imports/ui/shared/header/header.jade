@@ -14,7 +14,7 @@ template(name="header")
 				ul.navbar-nav.right-pad-nav
 					+loginButtons
 					if currentUser	
-						li.nav-item(class="{{isActiveRoute_Multi 'settings_myProjects|settings_myDonationClaims|settings_admin'}}")
+						li.nav-item(class="{{isActiveRoute_Multi 'settings_myProjects|settings_myDonationClaims|settings_admin|settings_seo'}}")
 							a.nav-link(href="{{pathFor 'settings_myProjects'}}")
 								i.fas.fa-sliders
 									//- i.fa.fa-circle.notification

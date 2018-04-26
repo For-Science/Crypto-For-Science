@@ -39,3 +39,8 @@ export const canFeatureProjects = () => {
   let user = Meteor.userId();
   return Roles.userIsInRole(user, ["administrator"])
 }
+
+export const canEditSiteMeta = () => {
+  let user = Meteor.userId();
+  return Roles.userIsInRole(user, ["administrator"])
+}

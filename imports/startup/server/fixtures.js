@@ -1,12 +1,14 @@
 import { Meteor } from "meteor/meteor"
 import { Roles } from "meteor/alanning:roles"
 import { Accounts } from "meteor/accounts-base"
-// import { Documents } from "/imports/api/documents/both/document-collection.js"
 import { Projects } from "/imports/api/projects/both/project-collection.js"
 import { ExternalFunds } from "/imports/api/externalFunds/both/externalFunds-collection.js"
+import { SiteMeta } from "/imports/api/siteMeta/both/siteMeta-collection.js"
 // ***************************************************************
 // Fixtures (generate dummy data)
 // ***************************************************************
+
+let siteMetaDescription = "Crypto For Science is a crowdfunding platform that uses the spirit of cryptocurrency in order to fund scientific research: no fees and no intermediaries - all the funds go directly to the researchers"
 
 let publishProject = (projectId) => {
 	Projects.update(
@@ -16,12 +18,12 @@ let publishProject = (projectId) => {
 				"bools.reviewed": true,
 				"bools.approved": true,
 			}
-	  },
-	  function(error, result) {
-	    if (error) {
-	      throw new Meteor.Error(500, "Server error")
-	    }
-	  }
+		},
+		function(error, result) {
+			if (error) {
+				throw new Meteor.Error(500, "Server error")
+			}
+		}
 	);
 }
 
@@ -34,12 +36,12 @@ let featureProject = (projectId) => {
 				"bools.approved": true,
 				"bools.isFeatured": true,
 			}
-	  },
-	  function(error, result) {
-	    if (error) {
-	      throw new Meteor.Error(500, "Server error")
-	    }
-	  }
+		},
+		function(error, result) {
+			if (error) {
+				throw new Meteor.Error(500, "Server error")
+			}
+		}
 	);
 }
 
@@ -56,12 +58,12 @@ let setEndDate = (projectId, numDays, percentComplete) => {
 				"timePeriods.startDate": startDate,
 				"timePeriods.endDate": endDate,
 			}
-	  },
-	  function(error, result) {
-	    if (error) {
-	      throw new Meteor.Error(500, "Server error")
-	    }
-	  }
+		},
+		function(error, result) {
+			if (error) {
+				throw new Meteor.Error(500, "Server error")
+			}
+		}
 	);
 
 }
@@ -123,9 +125,9 @@ Meteor.startup(() => {
 				},
 			},
 			function(error, project_id) {
-        if (error) {
-          throw new Meteor.Error(500, "Server error")
-        }
+				if (error) {
+					throw new Meteor.Error(500, "Server error")
+				}
 				else{
 
 					featureProject(project_id) // publish and feature the project
@@ -136,7 +138,7 @@ Meteor.startup(() => {
 						addExternalFundsforProject(newProject.raised.totalRaised, project_id);
 					}
 				}
-      }
+			}
 		);
 
 		Projects.insert(
@@ -197,9 +199,9 @@ Meteor.startup(() => {
 				},
 			},
 			function(error, project_id) {
-        if (error) {
-          throw new Meteor.Error(500, "Server error")
-        }
+				if (error) {
+					throw new Meteor.Error(500, "Server error")
+				}
 				else{
 					publishProject(project_id) // just publish it, don't feature it
 					// add ExternalFunds for Project
@@ -209,10 +211,25 @@ Meteor.startup(() => {
 						addExternalFundsforProject(newProject.raised.totalRaised, project_id);
 					}
 				}
-      }
+			}
 		);
 	}
 
-
+	if (SiteMeta.find().count() === 0) { // set up site meta
+		SiteMeta.insert(
+			{
+				"crawlers" : {
+					"facebookOpenGraph" : {
+						"description" : siteMetaDescription
+					}
+				}
+			},
+			function(error, project_id) {
+				if (error) {
+					throw new Meteor.Error(500, "Server error")
+				}
+			}
+		);
+	}
 
 })

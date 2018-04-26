@@ -1,31 +1,23 @@
-import { Template } from "meteor/templating"
+import { Template } from "meteor/templating";
+import { Projects } from "/imports/api/projects/both/project-collection.js";
+import * as projectMethods from "/imports/api/projects/both/project-methods.js";
+import * as permissions from "/imports/modules/permissions.js";
 
-import { Projects } from "/imports/api/projects/both/project-collection.js"
-
-// import { approveProject, rejectProject} from "/imports/api/projects/both/project-methods.js"
-import * as projectMethods from "/imports/api/projects/both/project-methods.js"
-import * as permissions from "/imports/modules/permissions.js"
-
-import "./settings.jade"
+import "./settings.jade";
 
 Template.settings_myProjects.onCreated(function() {
-  this.subscribe("projects.isResearcher")
+  this.subscribe("projects.isResearcher");
 })
-Template.settings_myProjects.onRendered(function() {})
-Template.settings_myProjects.onDestroyed(function() {})
 Template.settings_myProjects.helpers ({
 	projects() {
 		let ids = Roles.getGroupsForUser(Meteor.userId(), 'researcher'); // returns an array of ids
-		return Projects.find({ _id: {$in: ids}}, { sort: { createdAt: -1 } })
+		return Projects.find({ _id: {$in: ids}}, { sort: { createdAt: -1 } });
 	}
 })
-Template.settings_myProjects.events({})
 
 Template.settings_admin.onCreated(function() {
   this.subscribe("projects.admin")
 })
-Template.settings_admin.onRendered(function() {})
-Template.settings_admin.onDestroyed(function() {})
 Template.settings_admin.helpers ({
 	projectsPending() {
 		return Projects.find({"bools.reviewed" : false, "bools.approved" : false}, { sort: { createdAt: -1 } })
@@ -36,10 +28,6 @@ Template.settings_admin.helpers ({
 	projectsRejected() {
 		return Projects.find({"bools.reviewed" : true, "bools.approved" : false}, { sort: { createdAt: -1 } })
 	}
-})
-Template.settings_admin.events({})
-
-Template.pendingCampaignListItem.events({
 })
 
 Template.approveProjectButton.events({
