@@ -3,6 +3,7 @@ import { Picker } from 'meteor/meteorhacks:picker';// import Picker
 import {SSR , Template } from 'meteor/meteorhacks:ssr'; // import SSR
 import { Projects } from "/imports/api/projects/both/project-collection.js"; // import Projects
 import { SiteMeta } from "/imports/api/siteMeta/both/siteMeta-collection.js" // import site Meta
+import { Images } from '/imports/fileTransfer/images/both/images-collection.js'; // images for meta tags
 
 let seoPicker = Picker.filter(function(req, res) {
   let isCrawler = [];
@@ -27,9 +28,10 @@ seoPicker.route('/', function(params, req, res){
 
 seoPicker.route('/projects/:projectID', function(params, req, res){
     let project = Projects.findOne({_id:params.projectID});
+		let coverImage = Images.findOne({"meta.projectId" : params.projectID, "meta.type" : "projectPhoto"},{sort: {"meta.createdAt": -1}});
     let html = SSR.render('seoLayout',{
         template:'ssr_projectShow',
-        data: {project:project}
+        data: {project:project, coverImage:coverImage||""}
     });
     res.end(html);
 });
