@@ -19,3 +19,7 @@ import "/imports/api/externalFunds/server/externalFunds-publications.js"
 // SITE META
 import "/imports/api/siteMeta/both/siteMeta-methods.js"
 import "/imports/api/siteMeta/server/siteMeta-publications.js"
+
+// IMAGES file transfer
+import "/imports/fileTransfer/images/both/images-methods.js"
+import "/imports/fileTransfer/images/server/images-publications.js"

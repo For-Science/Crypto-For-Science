@@ -20,40 +20,6 @@ template(name="settings")
 				+settings_admin
 				+settings_Meta
 
-template(name="settings_myProjects")
-	#myProjects.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_myProjects'}}")
-		h5 Campaigns
-		ul.list-group
-			if projects.count
-				each project in projects
-					li.list-group-item
-						.row
-							.col-4
-								if project.bools.approved
-									a(href="{{pathFor 'projectShow' projectId=project._id}}") #{project.title}
-								else
-									p #{project.title}
-								+progressBar(project=project)
-								if project.bools.reviewed
-									if project.bools.approved
-										span.badge.badge-success approved
-									else
-										span.badge.badge-danger denied
-								else
-									span.badge.badge-secondary pending review
-							.col-8.text-right
-								if project.bools.approved
-									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit info
-									| 
-									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectExternalFundsAdmin' projectId=project._id}}" role="button") Add external funding
-									| 
-									a.btn.btn-sm.btn-primary(href="{{pathFor 'projectDonationClaimsAdmin' projectId=project._id}}" role="button") Manage donation claims
-									//- a.btn.btn-sm.btn-secondary(href="#" role="button") End Campaign
-			else
-				p You don't have any fundraising campaigns.
-			a.btn.btn-primary.btn-lg(href="{{pathFor 'projectNew'}}" role="button")
-				|Submit a new project
-
 template(name="settings_myDonations")
 	#myDonations.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_myDonations'}}")
 		h2 My Donations

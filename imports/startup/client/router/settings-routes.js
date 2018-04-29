@@ -1,9 +1,9 @@
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { BlazeLayout } from "meteor/kadira:blaze-layout";
 
-// import "/imports/ui/components/settings/settings_myProjects/settings_myProjects.js"
 import "/imports/ui/pages/settings/settings.js";
 import "/imports/ui/pages/settings/settings_Meta/settings_Meta.js";
+import "/imports/ui/pages/settings/settings_MyProjects/settings_MyProjects.js";
 
 // ***************************************************************
 // Settings routes

@@ -1,0 +1,81 @@
+template(name="settings_myProjects")
+	#myProjects.tab-pane.fade(role='tabpanel' class="{{isActiveRoute_Tab 'settings_myProjects'}}")
+		h5 Campaigns
+		ul.list-group
+			if projects.count
+				each project in projects
+					li.list-group-item
+						if project.bools.reviewed
+							+reviewed(project=project)
+						else
+							+pendingReview(project=project)
+			else
+				p You don't have any fundraising campaigns.
+			a.btn.btn-primary.btn-lg(href="{{pathFor 'projectNew'}}" role="button")
+				|Submit a new project
+
+template(name="reviewed")
+	.row
+		.col-12.text-right
+			if project.bools.approved
+				span.badge.badge-success approved
+			else
+				span.badge.badge-danger denied
+			br
+			br
+	.row
+		.col-12.col-sm-6.col-8
+			if project.bools.approved
+				p 
+					b 
+						a(href="{{pathFor 'projectShow' projectId=project._id}}") #{project.title}
+				+progressBar(project=project)
+				if imageFile
+					| team photo: 
+					br
+					img(src="#{imageFile.link}" alt="#{imageFile.name}" style="width:100%; max-width:200px")
+				else
+					p upload photo of the research team: 
+				+uploadForm(project=project)
+			else
+				p #{project.title}
+		.col-12.col-sm-6.col-4.text-right
+			a.btn.btn-sm.btn-primary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit info
+			br
+			a.btn.btn-sm.btn-primary(href="{{pathFor 'projectExternalFundsAdmin' projectId=project._id}}" role="button") Add external funding
+			br
+			a.btn.btn-sm.btn-primary(href="{{pathFor 'projectDonationClaimsAdmin' projectId=project._id}}" role="button") Manage donation claims
+			//- a.btn.btn-sm.btn-secondary(href="#" role="button") End Campaign
+
+template(name="pendingReview")
+	.row
+		.col-12.text-right
+			span.badge.badge-secondary pending review
+			br
+			br
+	.row
+		.col-12
+			p 
+				b #{project.title}
+				br
+				br 
+				| next steps: 
+			ol
+				li
+					strike 
+						|submit project
+				li
+					if imageFile
+						strike
+							upload photo of the research team: 
+							br
+						img(src="#{imageFile.link}" alt="#{imageFile.name}" style="width:100%; max-width:200px")
+						br
+					else
+						| upload photo of the research team: 
+					+uploadForm(project=project)
+				li
+					if imageFile
+						| we review your project
+					else
+						| once steps 1 and 2 are complete, we review your project

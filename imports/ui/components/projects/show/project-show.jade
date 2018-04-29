@@ -7,26 +7,32 @@
 template(name="projectShow")
 	if Template.subscriptionsReady
 		if project
-			div.container#title		
+			div.container#title
+				if canEditProject project._id
+					div.row
+						div.col-12.text-right 	
+							a.btn.btn-sm.btn-secondary(href="{{pathFor 'settings_myProjects'}}" role="button") Manage
+							br
+							br
 				div.row
 					div.col-sm-12
-						div.jumbotron
-							div.row
-								div.col-sm-12.text-right
-									if canEditProject project._id
-										a.btn.btn-sm.btn-secondary(href="{{pathFor 'projectEdit' projectId=project._id}}" role="button") Edit
-							div.row
-								div.col-sm-12
-									p.text-right 
-										strong {{daysRemaining project.timePeriods.endDate}}
-									h1.display-4 #{project.title}
+						h1.display-4 #{project.title}
+				div.row
+					div.col-sm-12
+						p.lead #{project.qa.summary}
+				div.row
+					div.col-sm-12
+						div.jumbotron		
 							div.row
 								div.col-sm-6
-									p.lead #{project.qa.summary}
+									if imageFile
+										img(src="#{imageFile.link}" alt="#{imageFile.name}" style="width:100%")
 								div.col-sm-6
 									
 									+progressBar(project=project)
 									p.text-muted Soft Goal : ${{centiToDeci project.goals.softGoal}} 
+									p
+										strong {{daysRemaining project.timePeriods.endDate}}
 									if hasTimeRemaining project.timePeriods.endDate
 										a.btn.btn-primary(href="#paymentInfo") Support this project
 				div.row

@@ -12,16 +12,19 @@ template(name="header")
 					li.nav-item(class="{{isActiveRoute 'projectsIndex'}}")
 						a.nav-link(href="{{pathFor 'projectsIndex'}}") Projects
 				ul.navbar-nav.right-pad-nav
-					+loginButtons
+					
+					li.nav-item(class="{{isActiveRoute 'about'}}")
+						a.nav-link(href="{{pathFor 'about'}}") About 
+						
+					//- li.nav-item(class="{{isActiveRoute 'contributors'}}")
+						a.nav-link(href="{{pathFor 'contributors'}}") Contributors
+					
+					li.nav-item &nbsp;
+					+loginButtons 
+					
+					li.nav-item &nbsp;
 					if currentUser	
 						li.nav-item(class="{{isActiveRoute_Multi 'settings_myProjects|settings_myDonationClaims|settings_admin|settings_seo'}}")
 							a.nav-link(href="{{pathFor 'settings_myProjects'}}")
 								i.fas.fa-sliders
 									//- i.fa.fa-circle.notification
-					li.nav-item &nbsp;
-					li.nav-item(class="{{isActiveRoute 'about'}}")
-						a.nav-link(href="{{pathFor 'about'}}") About
-						
-					li.nav-item &nbsp;
-					li.nav-item(class="{{isActiveRoute 'contributors'}}")
-						a.nav-link(href="{{pathFor 'contributors'}}") Contributors

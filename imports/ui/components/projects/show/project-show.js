@@ -3,6 +3,7 @@ import { FlowRouter } from "meteor/kadira:flow-router"
 
 import { Projects } from "/imports/api/projects/both/project-collection.js"
 import { DonationClaims } from "/imports/api/donationClaims/both/donation-claim-collection.js"
+import { Images } from '/imports/fileTransfer/images/both/images-collection.js';
 
 import "./project-show.jade"
 
@@ -12,6 +13,7 @@ Template.projectShow.onCreated(function () {
   this.autorun(() => {
     this.subscribe("donationClaims.forProject", this.getProjectID());
     this.subscribe("projects.single", this.getProjectID());
+		this.subscribe("files.images.projectCover", this.getProjectID());
     // this.subscribe("donationClaims.forProject", this.getProjectID());
   })
 })
@@ -27,6 +29,9 @@ Template.projectShow.helpers({
   donationClaims() {
     return DonationClaims.find({}, { sort: { createdAt: -1 } })
   },
+	imageFile() {
+    return Images.findOne({"meta.projectId" : Template.instance().getProjectID(), "meta.type" : "projectPhoto"},{sort: {"meta.createdAt": -1}});
+  }
 })
 
 Template.projectShow.events({})

@@ -5,16 +5,6 @@ import * as permissions from "/imports/modules/permissions.js";
 
 import "./settings.jade";
 
-Template.settings_myProjects.onCreated(function() {
-  this.subscribe("projects.isResearcher");
-})
-Template.settings_myProjects.helpers ({
-	projects() {
-		let ids = Roles.getGroupsForUser(Meteor.userId(), 'researcher'); // returns an array of ids
-		return Projects.find({ _id: {$in: ids}}, { sort: { createdAt: -1 } });
-	}
-})
-
 Template.settings_admin.onCreated(function() {
   this.subscribe("projects.admin")
 })

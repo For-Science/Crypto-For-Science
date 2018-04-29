@@ -1,0 +1,8 @@
+template(name="uploadForm")
+	+with(project)
+		with currentUpload
+			p Uploading 
+				b #{file.name}: 
+			span#progress #{progress.get}%
+		else
+			input#projectImageInput(type="file" name="projectImageInput" data-projectid="#{_id}")
