@@ -64,7 +64,7 @@ template(name="pendingCampaignListItem")
 		li.list-group-item
 			.row
 				.col-6
-					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+					a(href="{{pathFor 'projectShow' projectId=_id slug=slug}}") #{title}
 				.col-6.text-right
 					+approveProjectButton
 					|&nbsp;
@@ -75,7 +75,7 @@ template(name="activeCampaignListItem")
 		li.list-group-item
 			.row
 				.col-6
-					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+					a(href="{{pathFor 'projectShow' projectId=_id slug=slug}}") #{title}
 				.col-6.text-right
 					if canFeatureProjects
 						if bools.isFeatured
@@ -93,7 +93,7 @@ template(name="rejectedCampaignListItem")
 		li.list-group-item
 			.row
 				.col-6
-					a(href="{{pathFor 'projectShow' projectId=_id}}") #{title}
+					a(href="{{pathFor 'projectShow' projectId=_id slug=slug}}") #{title}
 				.col-6.text-right
 					+approveProjectButton
 

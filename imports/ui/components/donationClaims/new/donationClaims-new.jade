@@ -29,5 +29,4 @@ template(name="projectDonationClaimNew")
 						//- +afQuickField name='projectId' readonly=true type='hidden'
 						//- ^ basically a textbox with instructions on how to claim
 						button.btn.btn-primary(type="submit") Claim your donation
-						a.btn.btn-link(role="button" href="{{pathFor 'projectShow' projectId=projectId}}") Back
-						//- ( href="{{pathFor 'projectShow' projectId=project._id}}#title" )
+						a.btn.btn-link(role="button" href="{{pathFor 'projectShow' projectId=projectId slug=slug}}") Back

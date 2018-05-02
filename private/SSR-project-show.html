@@ -6,14 +6,16 @@ to check for the presence of crawlers when the /projects/:projectID route is hit
 and if a crawler is detected, it renders on the server the content (below) and returns it.
 note that this is not the entire page copy, since the crawlers are looking for specific meta data only. -->
 
-<!-- test it by doing a curl "http://localhost:3000/projects/{valid project ID}" -H 'user-agent: facebookexternalhit/1.1'
-where {valid project ID} is a valid project id. -->
+<!-- test it by doing a curl "http://localhost:3000/projects/p/:projectId/:slug" -H 'user-agent: facebookexternalhit/1.1'
+where :projectId is a valid project id. -->
+
+
 
 <title>Crypto For Science : {{project.title}}</title>
 <!-- Open Graph Meta Tags -->
 
 <meta property="og:title" content="{{project.title}}"/> <!-- Title -->
-<meta property="og:url" content="https://cryptoforscience.com/posts/{{project._id}}"/> <!-- URL -->
+<meta property="og:url" content=" https://cryptoforscience.com/projects/v/{{project._id}}/{{project.slug}}"/> <!-- URL -->
 <meta property="og:description" content="{{project.summary}}"/> <!-- Description -->
 <meta property="og:type" content="website"/> <!-- Object Type -->
 <meta property="og:site_name" content="Crypto For Science"/> <!-- Site Name -->

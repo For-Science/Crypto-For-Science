@@ -27,7 +27,10 @@ Template.projectDonationClaimNew.helpers({
 	},
 	projectName: function () {
 		return Projects.findOne({ _id: Template.instance().getProjectId() }).title
-	}
+	},
+	slug: function () {
+		return Projects.findOne({ _id: Template.instance().getProjectId() }).slug
+	},
 })
 
 Template.projectDonationClaimNew.events({})

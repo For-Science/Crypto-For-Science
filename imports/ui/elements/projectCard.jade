@@ -3,7 +3,7 @@ template(name="projectCard")
 	div.card.projectCard
 		div.row
 			div.col-sm-12
-				a.headerLink(href="{{pathFor 'projectShow' projectId=project._id}}#title")
+				a.headerLink(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}#title")
 					div.jumbotron.jumbotron-fluid.projectCard-jumbotron
 						div.container
 							div.row
@@ -17,14 +17,9 @@ template(name="projectCard")
 								//- siv.col-sm-2
 									
 		div.card-body
-			//- div.row
-				div.col-sm-12
-					a(href="{{pathFor 'projectShow' projectId=project._id}}#title")
-						h5.card-title #{project.title}
-			//- hr
 			div.row
 				div.col-sm-12
-					a.headerLink(href="{{pathFor 'projectShow' projectId=project._id}}#title")
+					a.headerLink(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}#title")
 						p.card-text #{project.qa.summary}
 			hr
 			div.row
@@ -34,4 +29,4 @@ template(name="projectCard")
 					+progressBar(project=project)
 				if hasTimeRemaining project.timePeriods.endDate
 					div.col-sm-12
-						a.btn.btn-primary(href="{{pathFor 'projectShow' projectId=project._id}}#title") Support this project
+						a.btn.btn-primary(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}#title") Support this project

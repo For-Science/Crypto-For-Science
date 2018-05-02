@@ -26,8 +26,11 @@ seoPicker.route('/', function(params, req, res){
     res.end(html);
 });
 
-seoPicker.route('/projects/:projectID', function(params, req, res){
-    let project = Projects.findOne({_id:params.projectID});
+seoPicker.route('/projects/p/:projectId/:slug/', function(params, req, res){
+		console.log("crawler route called for project");
+    let project = Projects.findOne({_id:params.projectId});
+		console.log("project:");
+		console.log(project);
 		let coverImage = Images.findOne({"meta.projectId" : params.projectID, "meta.type" : "projectPhoto"},{sort: {"meta.createdAt": -1}});
     let html = SSR.render('seoLayout',{
         template:'ssr_projectShow',

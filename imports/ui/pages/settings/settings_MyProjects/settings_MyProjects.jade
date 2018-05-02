@@ -28,7 +28,7 @@ template(name="reviewed")
 			if project.bools.approved
 				p 
 					b 
-						a(href="{{pathFor 'projectShow' projectId=project._id}}") #{project.title}
+						a(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}") #{project.title}
 				+progressBar(project=project)
 				if imageFile
 					| team photo: 

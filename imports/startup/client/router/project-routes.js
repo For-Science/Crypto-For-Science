@@ -46,7 +46,7 @@ FlowRouter.route("/projects/new", {
 
 // PROJECT SHOW
 // -------------------------------------------------------
-FlowRouter.route("/projects/:projectId", {
+FlowRouter.route("/projects/p/:projectId/:slug", { // p is short for project
   // FlowRouter.route("/projects/single", {
   action: function () {
     BlazeLayout.render("layout", {
@@ -60,7 +60,7 @@ FlowRouter.route("/projects/:projectId", {
 
 // PROJECT EDIT
 // -------------------------------------------------------
-FlowRouter.route("/projects/:projectId/edit", {
+FlowRouter.route("/projects/m/:projectId/edit", { // m is short for manage
   action: function () {
     BlazeLayout.render("layout", {
       header: "header",
@@ -74,7 +74,7 @@ FlowRouter.route("/projects/:projectId/edit", {
 
 // projectDonationClaim
 // -------------------------------------------------------
-FlowRouter.route("/projects/:projectId/claimADonationClaim", {
+FlowRouter.route("/projects/i/:projectId/claimADonation", { //
   action: function () {
     BlazeLayout.render("layout", {
       header: "header",
@@ -87,7 +87,7 @@ FlowRouter.route("/projects/:projectId/claimADonationClaim", {
 
 // projectDonationClaimsAdmin
 // -------------------------------------------------------
-FlowRouter.route("/projects/:projectId/manageClaims", {
+FlowRouter.route("/projects/m/:projectId/claims", { // m is short for manage
   action: function () {
     BlazeLayout.render("layout", {
       header: "header",
@@ -100,7 +100,7 @@ FlowRouter.route("/projects/:projectId/manageClaims", {
 
 // projectExternalFundsAdmin
 // -------------------------------------------------------
-FlowRouter.route("/projects/:projectId/manageExternalFunds", {
+FlowRouter.route("/projects/m/:projectId/externalFunds/manage", { // m is short for manage
   action: function () {
     BlazeLayout.render("layout", {
       header: "header",
@@ -113,7 +113,7 @@ FlowRouter.route("/projects/:projectId/manageExternalFunds", {
 
 // projectExternalFundsNew
 // -------------------------------------------------------
-FlowRouter.route("/projects/:projectId/addExternalFunds", {
+FlowRouter.route("/projects/m/:projectId/externalFunds/add", { // m is short for manage
   action: function () {
     BlazeLayout.render("layout", {
       header: "header",

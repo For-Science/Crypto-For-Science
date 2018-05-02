@@ -4,6 +4,10 @@ import SimpleSchema from "simpl-schema"
 // Projects schema
 // ***************************************************************
 
+const convertToSlug = (Text)=>{
+	return Text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+}
+
 const projectContactSchema = new SimpleSchema({
 	contactName:{
 		type: String,
@@ -205,6 +209,28 @@ const ProjectsSchema = new SimpleSchema({
     max: 120,
     optional: false
   },
+	slug: {
+		type: String,
+		optional: true,
+		denyUpdate: true,
+		autoValue : function() {
+			if (this.isInsert) {
+				if (this.field('title').isSet) {
+					return convertToSlug( (this.field('title').value).toLowerCase() );
+				}
+			}
+		}
+	},
+	// key: { // the idea here is to use this key for the URL so that it's a bit shorter than using the document ID
+	// 	type: String,
+	// 	optional: true,
+	// 	denyUpdate: true,
+	// 	autoValue : function() {
+	// 		if (this.isInsert) {
+	// 			// get the latest key, possibly using findAndModify to auto-inc the counter avoiding duplicates
+	// 		}
+	// 	}
+	// },
 	timePeriods :{
 		type : projectTimePeriodSchema,
 	},

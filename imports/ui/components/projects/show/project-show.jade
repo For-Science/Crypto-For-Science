@@ -92,7 +92,7 @@ template(name="projectShow")
 						p
 							|When you donate cryptocurrency, your contribution is automatically reflected in the campaign total.
 							| In addition, you can
-							a(href="{{pathFor 'projectDonationClaimNew' projectId=project._id}}") claim your donation
+							a(href="{{pathFor 'projectDonationClaimNew' projectId=project._id slug=project.slug}}") claim your donation
 							|and get listed as a contributor, if you want.
 					div.col-sm-12
 						if donationClaims.count
