@@ -26,16 +26,16 @@ template(name="reviewed")
 	.row
 		.col-12.col-sm-6.col-8
 			if project.bools.approved
-				p 
-					b 
+				p
+					b
 						a(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}") #{project.title}
 				+progressBar(project=project)
 				if imageFile
-					| team photo: 
+					| team photo:
 					br
 					img(src="#{imageFile.link}" alt="#{imageFile.name}" style="width:100%; max-width:200px")
 				else
-					p upload photo of the research team: 
+					p upload photo of the researcher or team:
 				+uploadForm(project=project)
 			else
 				p #{project.title}
@@ -55,24 +55,24 @@ template(name="pendingReview")
 			br
 	.row
 		.col-12
-			p 
+			p
 				b #{project.title}
 				br
-				br 
-				| next steps: 
+				br
+				| next steps:
 			ol
 				li
-					strike 
+					strike
 						|submit project
 				li
 					if imageFile
 						strike
-							upload photo of the research team: 
+							upload photo of the researcher or team:
 							br
 						img(src="#{imageFile.link}" alt="#{imageFile.name}" style="width:100%; max-width:200px")
 						br
 					else
-						| upload photo of the research team: 
+						| upload photo of the researcher or team:
 					+uploadForm(project=project)
 				li
 					if imageFile
