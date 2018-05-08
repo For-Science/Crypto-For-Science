@@ -3,7 +3,7 @@ template(name="projectCard")
 	div.card.projectCard
 		div.row
 			div.col-sm-12
-				a.headerLink(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}#title")
+				a.headerLink(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}")
 					div.jumbotron.jumbotron-fluid.projectCard-jumbotron
 						div.container
 							div.row
@@ -15,18 +15,18 @@ template(name="projectCard")
 											|&nbsp;
 									h5.card-title #{project.title}
 								//- siv.col-sm-2
-									
+
 		div.card-body
 			div.row
 				div.col-sm-12
-					a.headerLink(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}#title")
+					a.headerLink(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}")
 						p.card-text #{project.qa.summary}
 			hr
 			div.row
 				div.col-sm-12
-					p.text-right 
+					p.text-right
 						strong {{daysRemaining project.timePeriods.endDate}}
 					+progressBar(project=project)
 				if hasTimeRemaining project.timePeriods.endDate
 					div.col-sm-12
-						a.btn.btn-primary(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}#title") Support this project
+						a.btn.btn-primary(href="{{pathFor 'projectShow' projectId=project._id slug=project.slug}}") Support this project
