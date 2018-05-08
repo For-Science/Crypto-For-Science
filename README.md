@@ -37,6 +37,7 @@ Our public Trello board: [https://trello.com/b/QDlYTHye/cryptoforsciencecom](htt
 How you can help:
 - Submit pull requests, help with our code!
 - Check the security of the website.
+- Become a ForSEH representative (described here and extremely useful for scientific research in your country, but without any scientific background needed: https://medium.com/forseh/helping-scientific-research-in-algeria-indonesia-macau-peru-bahrain-philippines-iran-2a4eb18cbce4)
 - Donate weekly to the projects that you like.
 - In the final version, become an Identity Checker or a Project Approver (the feature is described here https://trello.com/c/oWhIqOTx/7-this-is-the-coolest-idea-ever-in-the-final-version-add-two-new-types-of-members-project-approver-and-identity-checker).
 - Become a scientist and use this website in order to get funding.
