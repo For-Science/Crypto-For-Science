@@ -38,19 +38,19 @@ template(name="projectShow")
 				div.row
 					div.col-sm-12
 						h4 Why is this useful?
-						p #{project.qa.whyUseful}
+						p {{breaklines project.qa.whyUseful}}
 				div.row
 					div.col-sm-12
 						h4 Approximately, how much time of research will this cover?
-						p #{project.qa.howMuchTime}
+						p {{breaklines project.qa.howMuchTime}}
 				div.row
 					div.col-sm-12
 						h4 How will the funds be spent?
-						p #{project.qa.howFundsWillbeSpent}
+						p {{breaklines project.qa.howFundsWillbeSpent}}
 				div.row
 					div.col-sm-12
 						h4 Description
-						p #{project.qa.description}
+						p {{breaklines project.qa.description}}
 				div.row
 					div.col-sm-6
 						h4 Contact

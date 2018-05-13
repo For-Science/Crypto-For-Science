@@ -133,3 +133,12 @@ Template.registerHelper( "hasTimeRemaining", (endDate) => {
 		return true
 	}
 })
+
+// Template.registerHelper('breaklines', function(text, options) {
+Template.registerHelper("breaklines", (text, options) => { https://stackoverflow.com/a/28746166/1937233
+  // text = s.escapeHTML(text); // not installing underscore.string just for a single function so... https://stackoverflow.com/a/6234804/1937233
+	text = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+
+  text = text.replace(/(\r\n|\n|\r)/gm, '<br/>'); // newlines
+  return new Spacebars.SafeString(text);
+});
