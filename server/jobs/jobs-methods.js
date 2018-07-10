@@ -210,7 +210,7 @@ Jobs.register({
 			}
 		}
 
-		if(!proceed){
+		if(!proceed){ // fail early
 			console.log("could not proceed");
 			console.log(failedproceedMessage);
 			return false;
@@ -241,7 +241,7 @@ Jobs.register({
 			}
 		}
 
-		if(!proceed){
+		if(!proceed){ // fail often
 			console.log("could not proceed");
 			console.log(failedproceedMessage);
 			return false;
@@ -257,19 +257,11 @@ Jobs.register({
 
 
 		// by this point we have in memory all BTC, ETH, their USD conversion totals, and externalRaised..
-		// update the project to include:
-		// 		the new BTC and ETH totals,
-		// 		their USD values,
-		// 		the project's total USD raised (with externalRaised)
 		// TODO sum everything up and update project.raised.totalRaised
 
-		// USD:
-		// totalExternalRaised,
 
 		let totalUSDRaised = totalExternalRaised + btc_USD + eth_USD;
 		let totalUSDRaised_Cents = totalUSDRaised * 100;
-
-		// update: BTC, ETC, totalRaised
 
 		console.log("updating coin totals");
 
