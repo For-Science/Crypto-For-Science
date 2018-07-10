@@ -115,8 +115,7 @@ Meteor.startup(() => {
 						"timePeriod" : 30
 				},
 				"cryptoAddresses" : {
-					"ETH" : "[etherium address for the project, if this were real]",
-					"BTC" : "[bitcoin address for the project, if this were real]",
+						"ETH" : "0xBd1123Ae4D65ef644F06266c67BD0044bbC74ae5",
 				},
 				"contact" : {
 						"contactName" : "Joseph Allen",
@@ -189,8 +188,8 @@ Meteor.startup(() => {
 						"timePeriod" : 30
 				},
 				"cryptoAddresses" : {
-						"ETH" : "[etherium address for the project, if this were real]",
-						"BTC" : "[bitcoin address for the project, if this were real]",
+						"ETH" : "0x396dF9Bc55900466046EcE519aE3882524Ab59b8",
+						"BTC" : "1NxaBCFQwejSZbQfWcYNwgqML5wWoE3rK4",
 				},
 				"contact" : {
 						"contactName" : "Sandra Johnson",

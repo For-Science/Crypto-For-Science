@@ -70,6 +70,7 @@ mongo-dev-server@1.1.0
 mongo-id@1.0.6
 mquandalle:jade@0.4.9
 mquandalle:jade-compiler@0.4.5
+msavin:sjobs@3.0.5
 npm-bcrypt@0.9.3
 npm-mongo@2.2.34
 observe-sequence@1.0.16

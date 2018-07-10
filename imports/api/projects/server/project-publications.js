@@ -52,14 +52,8 @@ Meteor.publish("projects.featured", function projectsFeatured() {
 Meteor.publish("projects.isResearcher", function projectsCanManage() {
 	// return projects that user can manage
 	let ids = Roles.getGroupsForUser(Meteor.userId(), 'researcher'); // returns an array of ids where user is researcher
-
-	// let obj_ids = ids.map(function(id) { return ObjectId(id); });
-	// let obj_ids = ids.map(function(id) { return Meteor.Collection.ObjectID(id); });
-	// return Projects.find({ _id: {$in: obj_ids}, "bools.approved" : true, "bools.outofTime" : false})
-
-	// return Projects.find({ _id: {$in: ids}, "bools.approved" : true, "bools.outofTime" : false})
 	return Projects.find({ _id: {$in: ids}})
-		// ^ just quering plain IDs as strings. could be faster with objectIds. but as you can see, I'm doing something wrong.
+		// ^ just quering plain IDs as strings. could be faster with objectIds.
 })
 
 // PROJECT SHOW
