@@ -46,7 +46,7 @@ FlowRouter.route("/projects/new", {
 
 // PROJECT SHOW
 // -------------------------------------------------------
-FlowRouter.route("/p/:slug", {
+FlowRouter.route("/projects/:slug", {
   action: function () {
     BlazeLayout.render("layout", {
       header: "header",
