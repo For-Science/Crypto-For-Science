@@ -58,17 +58,31 @@ Meteor.publish("projects.isResearcher", function projectsCanManage() {
 
 // PROJECT SHOW
 // -------------------------------------------------------
-Meteor.publish("projects.single", function projectsSingle(id) {
-  new SimpleSchema({
-    id: { type: String }
-  }).validate({ id })
+Meteor.publish("projects.single", function projectsSingle({slug, id}) {
+
+	if(!!id){
+	  new SimpleSchema({
+	    id: { type: String }
+	  }).validate({ id })
+	}
 
 	if( permissions.canViewAnyProject() ) {
 		// staff can see a project even if it's not published
-		return Projects.find(id)
+		if(!!id){
+			return Projects.find(id)
+		}
+		else{
+			return Projects.find({"slug":slug})
+		}
+
 	}
 	else{
 		// otherwise the project needs to be published
-		return Projects.find({_id : id, "bools.approved" : true})
+		if(!!id){
+			return Projects.find({_id : id._id, "bools.approved" : true})
+		}
+		else{
+			return Projects.find({"slug" : slug, "bools.approved" : true})
+		}
 	}
 })

@@ -46,8 +46,7 @@ FlowRouter.route("/projects/new", {
 
 // PROJECT SHOW
 // -------------------------------------------------------
-FlowRouter.route("/projects/p/:projectId/:slug", { // p is short for project
-  // FlowRouter.route("/projects/single", {
+FlowRouter.route("/p/:slug", {
   action: function () {
     BlazeLayout.render("layout", {
       header: "header",

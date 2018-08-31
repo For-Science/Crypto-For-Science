@@ -15,7 +15,7 @@ Template.projectExternalFundsAdmin.onCreated(function () {
 
 	this.autorun(() => {
 		this.subscribe("externalFunds.canManage", this.getProjectId());
-		this.subscribe("projects.single", this.getProjectId())
+		this.subscribe("projects.single", {"id":this.getProjectId()})
 	})
 })
 

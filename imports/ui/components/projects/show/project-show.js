@@ -8,13 +8,14 @@ import { Images } from '/imports/fileTransfer/images/both/images-collection.js';
 import "./project-show.jade"
 
 Template.projectShow.onCreated(function () {
-  this.getProjectID = () => FlowRouter.getParam("projectId")
+
+	this.getSlug = () => FlowRouter.getParam("slug");
+
 
   this.autorun(() => {
-    this.subscribe("donationClaims.forProject", this.getProjectID());
-    this.subscribe("projects.single", this.getProjectID());
-		this.subscribe("files.images.projectCover", this.getProjectID());
-    // this.subscribe("donationClaims.forProject", this.getProjectID());
+    this.subscribe("donationClaims.forProject", {"slug":this.getSlug()} );
+    this.subscribe("projects.single", {"slug":this.getSlug()} );
+		this.subscribe("files.images.projectCover", {"slug":this.getSlug()} );
   })
 })
 
@@ -24,13 +25,16 @@ Template.projectShow.onDestroyed(function () { })
 
 Template.projectShow.helpers({
   project() {
-    return Projects.findOne({ _id: Template.instance().getProjectID() }) || false
+    let project = Projects.findOne({ slug: Template.instance().getSlug() }) || false
+		console.log("project:");
+		console.log(JSON.stringify(project));
+		return project;
   },
   donationClaims() {
     return DonationClaims.find({}, { sort: { createdAt: -1 } })
   },
 	imageFile() {
-    return Images.findOne({"meta.projectId" : Template.instance().getProjectID(), "meta.type" : "projectPhoto"},{sort: {"meta.createdAt": -1}});
+    return Images.findOne({"meta.projectId" : Template.instance().getSlug(), "meta.type" : "projectPhoto"},{sort: {"meta.createdAt": -1}});
   }
 })
 

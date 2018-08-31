@@ -19,6 +19,7 @@ Template.uploadForm.events({
 	'change #projectImageInput'(e, template) {
 		console.log("file attached to upload form");
 		let projectId = $(e.target).data('projectid');
+		let slug = $(e.target).data('slug');
 
 		if (e.currentTarget.files && e.currentTarget.files[0]) {
 			// We upload only one file, in case
@@ -31,6 +32,7 @@ Template.uploadForm.events({
 				chunkSize: 'dynamic',
 				meta: {
 					"projectId" : projectId,
+					"slug" : slug,
 					"type" : "projectPhoto",
 					"createdAt": Date.now()
 				}

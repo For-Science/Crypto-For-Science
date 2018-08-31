@@ -30,8 +30,11 @@ Meteor.publish("donationClaims.canManage", function donationClaimsCanManage(proj
 
 // DONATION CLAIMS SHOW
 // -------------------------------------------------------
-Meteor.publish("donationClaims.forProject", function donationClaimsForProject(projectId) {
-	return DonationClaims.find({ "projectId": projectId, "reviewed": true, "approved": true })
+Meteor.publish("donationClaims.forProject", function donationClaimsForProject( {slug,projectId} ) {
+	if(!!projectId){
+		return DonationClaims.find({ "projectId": projectId, "reviewed": true, "approved": true })
+	}
+	return DonationClaims.find({ "slug": slug, "reviewed": true, "approved": true })
 })
 
 

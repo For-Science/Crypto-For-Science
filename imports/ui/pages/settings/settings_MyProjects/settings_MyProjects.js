@@ -21,7 +21,7 @@ Template.pendingReview.onCreated(function() {
 	console.log("t.pendingReview project id is");
 	console.log(this.getProjectID());
 	this.autorun(() => {
-		this.subscribe("files.images.projectCover", this.getProjectID());
+		this.subscribe("files.images.projectCover", {"projectId" : this.getProjectID()} );
 	})
 });
 Template.pendingReview.helpers ({
@@ -35,7 +35,7 @@ Template.reviewed.onCreated(function() {
 	console.log("t.reviewed.onCreated project id is");
 	console.log(this.getProjectID());
 	this.autorun(() => {
-		this.subscribe("files.images.projectCover", this.getProjectID());
+		this.subscribe("files.images.projectCover", {"projectId" : this.getProjectID()} );
 	})
 });
 Template.reviewed.helpers ({

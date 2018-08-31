@@ -15,7 +15,7 @@ Template.projectDonationClaimsAdmin.onCreated(function () {
 
 	this.autorun(() => {
 		this.subscribe("donationClaims.canManage", this.getProjectId());
-		this.subscribe("projects.single", this.getProjectId())
+		this.subscribe("projects.single", { "id":this.getProjectId()} )
 	})
 })
 

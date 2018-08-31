@@ -11,7 +11,7 @@ Template.projectEdit.onCreated(function() {
   this.getProjectId = () => FlowRouter.getParam("projectId")
 
   this.autorun(() => {
-    this.subscribe("projects.single", this.getProjectId())
+    this.subscribe("projects.single", {"id":this.getProjectId()})
   })
 })
 
