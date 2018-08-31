@@ -26,12 +26,13 @@ seoPicker.route('/', function(params, req, res){
     res.end(html);
 });
 
-seoPicker.route('/projects/p/:projectId/:slug/', function(params, req, res){
+// seoPicker.route('/projects/p/:projectId/:slug/', function(params, req, res){
+seoPicker.route('/projects/:slug/', function(params, req, res){
 		console.log("crawler route called for project");
-    let project = Projects.findOne({_id:params.projectId});
+    let project = Projects.findOne({"slug":params.slug});
 		console.log("project:");
 		console.log(project);
-		let coverImage = Images.findOne({"meta.projectId" : params.projectID, "meta.type" : "projectPhoto"},{sort: {"meta.createdAt": -1}});
+		let coverImage = Images.findOne({"meta.slug" : params.slug, "meta.type" : "projectPhoto"},{sort: {"meta.createdAt": -1}});
     let html = SSR.render('seoLayout',{
         template:'ssr_projectShow',
         data: {project:project, coverImage:coverImage||""}
