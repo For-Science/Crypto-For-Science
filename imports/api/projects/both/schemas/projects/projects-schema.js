@@ -1,11 +1,17 @@
 import SimpleSchema from "simpl-schema"
 
+import { Projects } from "/imports/api/projects/both/project-collection.js"
+
 // ***************************************************************
 // Projects schema
 // ***************************************************************
 
 const convertToSlug = (Text)=>{
 	return Text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+}
+
+const randomChars = (len)=>{
+	return Math.random().toString(36).substr(2, len);
 }
 
 const projectContactSchema = new SimpleSchema({
@@ -216,7 +222,13 @@ const ProjectsSchema = new SimpleSchema({
 		autoValue : function() {
 			if (this.isInsert) {
 				if (this.field('title').isSet) {
-					return convertToSlug( (this.field('title').value).toLowerCase() );
+					let slugStringInit = convertToSlug( (this.field('title').value).toLowerCase() );
+					let slugStringFinal = slugStringInit;
+					while( !!Projects.findOne({"slug" : slugStringFinal}) ){
+						console.log("slug is not not unique.. trying to make unique.");
+						slugStringFinal = ""+slugStringInit+"-"+randomChars(3);
+					}
+					return slugStringFinal;
 				}
 			}
 		}
