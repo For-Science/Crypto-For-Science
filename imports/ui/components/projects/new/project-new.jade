@@ -35,3 +35,41 @@ template(name="projectNew")
 								|By clicking the button below, I agree to the <a href="/about" target="_blank">Terms of service</a>.<br/>
 								button.btn.btn-primary(type="submit") Submit
 								//- a.btn.btn-link(role="button" href="{{pathFor 'frontpage'}}") Back
+								
+template(name="projectNew_For_Testing")
+	div.container
+		//- div.row
+			div.col-sm-12
+				h1 new project
+		div.row
+			div.col-sm-12
+				div.project-new
+					div.card
+						h2.card-title.card-header Submit your project
+						div.card-body
+							//- h2.card-title Submit your project
+							h6.card-subtitle.text-muted.
+								Get your project listed on Crypto for Science.
+							br
+							hr
+							br
+							+autoForm schema=createProjectSchema id="projectNewForm" type="method" meteormethod="projects.create"
+								+afQuickField name='title' value='SENS Research Foundation'
+								+afQuickField name='qa.summary' rows=2 value='SENS Research Foundation is a 501(c)(3) public charity that is transforming the way the world researches and treats age-related disease.'
+								+afQuickField name='goals.projectGoal' value='150000000000'
+								+afQuickField name='goals.softGoal' value='50000000000'
+								+afQuickField name='raised.totalRaised' value='549'
+								+afQuickField name='timePeriods.timePeriod' value='60'
+								//- +afQuickField name='timePeriods.softTimePeriod'
+								+afQuickField name='qa.whyUseful' rows=6 value='The research we fund at universities around the world and at our own Research Center uses regenerative medicine to repair the damage underlying the diseases of aging. Our goal is to help build the industry that will cure these diseases.'
+								+afQuickField name='qa.howMuchTime' rows=3 value='Aubrey de Grey has said on 2017.09.22:\n\n> Short answer: $1 billion over 10 years would do it with high probability.\n\n> Longer answer: clearly the question is not whether but when aging will be brought under comprehensive medical control. Thus, the right question is how much money is needed, over what time period, to hasten that time to the point where money will not make much difference any more because the rate of progress is limited by the simple difficulty of the research. See above for the number!\n\n> Key other number: at current funding levels we are going so slowly that (by my current estimate) we could easily end up delaying the defeat of aging by a decade. Therefore, even low-balling the expectations, every $2 spent in supporting this work would save a life. That compares very favourably with anything else.\n\nSource: https://www.quora.com/How-much-money-does-Aubrey-de-Grey-need-to-find-a-cure/answer/Aubrey-de-Grey'
+								+afQuickField name='qa.howFundsWillbeSpent' rows=3 value='Organizational reports are here: http://www.sens.org/about/organizational-reports\n\nAs an example, in the Finances section for 2017, we can see these expenses:\n- Research $2,146,412\n- Education $920,533\n- Outreach $172,380\n- Administration $676,534'
+								+afQuickField name='qa.description' rows=6 value="At SENS Research Foundation, we believe that a world free of age-related disease is possible. That's why we're funding work at universities across the world and at our own Research Center in Mountain View, CA.\n\nOur research emphasizes the application of regenerative medicine to age-related disease, with the intent of repairing underlying damage to the body's tissues, cells, and molecules. Our goal is to help build the industry that will cure the diseases of aging. \n\nSRF is, at its core, a research-focused outreach organization. Our outreach efforts include the SENS conferences at Cambridge, the annual Rejuvenation Biotechnology Conference series, summits, speaking engagements, and general advocacy. We strive to inform policymakers and the public at large about the promise of the damage-repair approach to treating age-related disease.\n\nFinally, SRF engages in educational work through our student program, SRF Education. SRF Education operates a summer internship program that places students at the SRF Research Center and outside institutions; provides students with guidance, mentorship, and materials grants for SENS-related research projects; and is developing online coursework."
+								+afQuickField name='cryptoAddresses.ETH' value='dgxcfhgjvhbkjlnkm'
+								+afQuickField name='cryptoAddresses.BTC' value='cfhgjvhkbjlnkmd'
+								+afQuickField name='contact.contactName' value='SENS Research Foundation'
+								+afQuickField name='contact.phone' value='(650) 336-1780'
+								+afQuickField name='contact.email' value='gifts@sens.org'
+								|By clicking the button below, I agree to the <a href="/about" target="_blank">Terms of service</a>.<br/>
+								button.btn.btn-primary(type="submit") Submit
+								//- a.btn.btn-link(role="button" href="{{pathFor 'frontpage'}}") Back
