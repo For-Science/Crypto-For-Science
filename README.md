@@ -30,7 +30,7 @@ A big advantage is that I have a marketing company, and I’ll promote the campa
 - I won’t hold any funds as an intermediary or an escrow, I won’t ask for any help for covering costs like website development and hosting.
 - etc.
 
-Our Slack, which has channels for developers, pentesters, marketers, representatives, etc.: [ForSEH](https://join.slack.com/t/forseh/shared_invite/enQtMzQ5MzI1Mjc2NTMwLWZkMzRmNmM5NzRhNzM0OWE2MzlmNTZlMWJjYzViNmU0NjFmMjM3MTAyYzJiOWQ0NTVhMWZjMGNiYmJiMWI0NDg)
+Our Slack, which has channels for developers, pentesters, marketers, representatives, etc.: [ForSEH](https://join.slack.com/t/forseh/signup)
 
 Our public Trello board: [https://trello.com/b/QDlYTHye/cryptoforsciencecom](https://trello.com/b/QDlYTHye/cryptoforsciencecom), which should be updated with features that we're working on.
 
